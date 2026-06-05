@@ -10,4 +10,8 @@ class BlogcategoryController extends Controller
     public function create(){
         return view('blogs.categories.create');
     }
+
+    //ghjkl;
+
+
 }
