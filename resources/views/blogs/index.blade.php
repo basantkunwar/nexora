@@ -12,12 +12,12 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
         <!-- ADD CATEGORY -->
-        <a href="{{route('blogs.categories.create')}}"
-           class="group bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+        <a href="{{route('blogs.categories.index')}}"
+           class="group bg-white border border-gray-200 h-50 rounded-xl p-6 shadow-sm hover:shadow-md transition">
 
             <div class="flex items-center justify-between">
                 <h2 class="text-xl font-semibold text-gray-800 group-hover:text-black">
-                    Add Category
+                    view Category
                 </h2>
                 <span class="text-2xl">📁</span>
             </div>
@@ -28,12 +28,12 @@
         </a>
 
         <!-- ADD BLOG -->
-        <a href="{{ route('blogs.create') }}"
+        <a href="{{ route('blogs.show') }}"
            class="group bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition">
 
             <div class="flex items-center justify-between">
                 <h2 class="text-xl font-semibold text-gray-800 group-hover:text-black">
-                    Add Blog
+                    view Blog
                 </h2>
                 <span class="text-2xl">✍️</span>
             </div>
@@ -44,12 +44,12 @@
         </a>
 
         <!-- ADD TAGS -->
-        <a href="{{route('blogs.tags.create')}}"
+        <a href="{{route('blogs.tags.index')}}"
            class="group bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition">
 
             <div class="flex items-center justify-between">
                 <h2 class="text-xl font-semibold text-gray-800 group-hover:text-black">
-                    Add Tags
+                    view Tags
                 </h2>
                 <span class="text-2xl">🏷️</span>
             </div>

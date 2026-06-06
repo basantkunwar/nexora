@@ -1,5 +1,9 @@
 <x-app-layout>
-
+<div class="flex justify-end">
+<a href="{{route('blogs.categories.create')}}" class="rounded-lg py-3 px-6 shadow-lg font-semibold fs-4 text-black bg-blue-500 hover:bg-blue-700">
+    +create categories
+</a>
+</div>
 <div class="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-10">
 
     <div class="w-full max-w-xl bg-white border border-gray-200 rounded-2xl shadow-sm p-8">
@@ -13,7 +17,7 @@
         </div>
 
         <!-- FORM -->
-        <form action="{{ route('blogs.categories.store') }}" method="POST" class="space-y-5">
+        <form action="{{ route('blogs.categories.store') }}" method="POST" enctype="multipart/form-data" class="space-y-5">
             @csrf
 
             <!-- CATEGORY NAME -->
@@ -32,7 +36,14 @@
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                 @enderror
             </div>
-
+{{-- images --}}
+<div class="">
+    <label class="block text-sm font-medium text-gray-700 mb-1">
+        Category Image
+    </label>
+    <input type="file" name="image" class="w-full px-4 py-3 border border-gray-300 rounded-xl
+                              focus:outline-none focus:ring-2 focus:ring-black focus:border-black transition">
+</div>
             <!-- SLUG (OPTIONAL) -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">

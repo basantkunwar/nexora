@@ -28,6 +28,9 @@ Route::middleware('auth')->group(function () {
 Route::get('/products/create', [productsController::class, 'create'])->name('products.create');
 Route::post('/products/store', [productsController::class, 'store'])->name('products.store');   
 route::get('/products/index', [productsController::class, 'index'])->name('products.index');
+Route::get('/products/edit/{id}', [productsController::class, 'edit'])->name('products.edit');
+Route::put('/products/update/{id}', [productsController::class, 'update'])->name('products.update');
+Route::delete('/products/delete/{id}', [productsController::class, 'destroy'])->name('products.destroy');  
 
 
 
@@ -56,6 +59,7 @@ Route::get('users/index',[usercontroller::class, 'index'])->name('users.index');
 // blog routes
 Route::get('blogs/create',[BlogController::class, 'create'])->name('blogs.create');
 Route::post('blogs/store',[BlogController::class, 'store'])->name('blogs.store');
+Route::get('blogs/show',[BlogController::class, 'show'])->name('blogs.show');
 Route::get('blogs/index',[BlogController::class, 'index'])->name('blogs.index');
 Route::get('blogs/categories/create', [BlogcategoryController::class, 'create'])->name('blogs.categories.create');
 Route::post('blogs/categories/store', [BlogcategoryController::class, 'store'])->name('blogs.categories.store');

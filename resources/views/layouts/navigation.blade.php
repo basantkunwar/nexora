@@ -17,7 +17,7 @@
         <!-- Menu -->
         <nav class="flex-1 px-4 py-6 space-y-2">
 
-            <a href="#"
+            <a href="{{ route('dashboard') }}"
                 class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gradient-to-r from-violet-600 to-indigo-500 text-white font-medium shadow-lg shadow-indigo-500/30">
                 📊 Dashboard
             </a>

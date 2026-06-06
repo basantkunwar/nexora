@@ -29,7 +29,7 @@
             <!-- Card Body -->
             <div class="p-8">
 
-                <form action="{{ route('category.store') }}" method="POST">
+                <form action="{{ route('category.store') }}"  enctype="multipart/form-data" method="POST">
                     @csrf
 
                     <!-- Category Name -->

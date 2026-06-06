@@ -110,13 +110,13 @@
                                     </a>
 
                                     <!-- Edit -->
-                                    <a href=""
+                                    <a href="{{route('products.edit', $product->id)}}"
                                        class="px-3 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition">
                                         Edit
                                     </a>
 
                                     <!-- Delete -->
-                                    <form action=""
+                                    <form action="{{ route('products.destroy', $product->id) }}"
                                           method="POST"
                                           onsubmit="return confirm('Are you sure?')">
 

@@ -1,5 +1,9 @@
 <x-app-layout>
-
+<div class="flex justify-end">
+<a href="{{route('blogs.create')}}" class="rounded-lg py-3 px-6 shadow-lg font-semibold fs-4 text-black bg-blue-500 hover:bg-blue-700">
+    +create blogs
+</a>
+</div>
 <div class="max-w-7xl mx-auto px-4 py-12">
 
     <form action="{{ route('blogs.store')}}" method="post" enctype="multipart/form-data">
@@ -40,7 +44,7 @@
                             <label class="block font-semibold text-slate-700 mb-2">
                                 Short Description
                             </label>
-                            <textarea name="short_description" rows="3"
+                            <textarea name="description" rows="3"
                                 class="w-full border border-slate-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                                 placeholder="Write a short introduction..."></textarea>
                         </div>
@@ -75,14 +79,7 @@
                     <div class="p-5 space-y-4">
 
                         <!-- CATEGORY -->
-                        <div>
-                            <label class="block font-semibold mb-2 text-slate-700">
-                                Category
-                            </label>
-                            <input type="text" name="category"
-                                class="w-full border border-slate-300 rounded-lg px-3 py-2"
-                                placeholder="Tech, Product, Event, News">
-                        </div>
+                       <x-blogcategories/>
 
                         <!-- FEATURE IMAGE -->
                         <div>
@@ -98,7 +95,7 @@
                             <label class="block font-semibold mb-2 text-slate-700">
                                 YouTube Link (optional)
                             </label>
-                            <input type="url" name="youtube"
+                            <input type="url" name="links"
                                 class="w-full border border-slate-300 rounded-lg px-3 py-2"
                                 placeholder="https://youtube.com/...">
                         </div>
@@ -128,14 +125,7 @@
                         </div>
 
                         <!-- TAGS -->
-                        <div>
-                            <label class="block font-semibold mb-2 text-slate-700">
-                                Tags
-                            </label>
-                            <input type="text" name="tags"
-                                class="w-full border border-slate-300 rounded-lg px-3 py-2"
-                                placeholder="AI, Tech, Laravel, Business">
-                        </div>
+                        <x-blogtag/>
 
                         <!-- SUBMIT -->
                         <button type="submit"

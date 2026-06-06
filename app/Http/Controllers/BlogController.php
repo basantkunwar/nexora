@@ -28,9 +28,12 @@ class BlogController extends Controller
     }
 
     public function index(){
-        // $blogs=Blog::all();
         return view('blogs.index');
     }
+public function show(){
+    $blogs=Blog::with('blogcategory','blogtags')->get();
+    return view('blogs.show',compact('blogs'));
 
+}
 
 }

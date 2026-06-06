@@ -1,5 +1,9 @@
 <x-app-layout>
-
+<div class="flex justify-end">
+<a href="{{route('blogs.tags.create')}}" class="rounded-lg py-3 px-6 shadow-lg font-semibold fs-4 text-black bg-blue-500 hover:bg-blue-700">
+    +create blogs
+</a>
+</div>
 <div class="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-10">
 
     <div class="w-full max-w-lg bg-white border border-gray-200 rounded-2xl shadow-sm p-8">
