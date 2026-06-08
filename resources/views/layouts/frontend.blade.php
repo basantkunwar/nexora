@@ -1,5 +1,9 @@
-@include('layouts.layout.header');
-<section>
+@include('layouts.partials.header')
+<main>
 @yield('content')
-</section>
-@include('layouts.layout.footer');
+</main>
+<main>
+    @yield('contents')
+
+</main>
+    @include('layouts.partials.footer')

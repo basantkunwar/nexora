@@ -103,7 +103,20 @@
 
         </div>
     </div>
+<script>
+function decreaseQty(btn) {
+    let input = btn.parentElement.querySelector('input');
+    let value = parseInt(input.value);
+    if (value > 1) input.value = value - 1;
+}
 
+function increaseQty(btn) {
+    let input = btn.parentElement.querySelector('input');
+    let max = parseInt(input.getAttribute('max'));
+    let value = parseInt(input.value);
+    if (value < max) input.value = value + 1;
+}
+</script>
 </footer>
 
 <!-- FONT AWESOME -->

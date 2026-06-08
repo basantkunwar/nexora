@@ -81,12 +81,12 @@
 
                                 <div class="flex justify-center gap-2">
 
-                                    <a href=""
+                                    <a href="{{ route('category.edit', $category->id) }}"
                                        class="px-3 py-1.5 text-xs border border-slate-300 rounded-lg hover:bg-slate-100 transition">
                                         Edit
                                     </a>
 
-                                    <form action=""
+                                    <form action="{{ route('category.destroy', $category->id) }}"
                                           method="POST"
                                           onsubmit="return confirm('Delete this category?')">
 

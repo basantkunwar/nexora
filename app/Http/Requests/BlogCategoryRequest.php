@@ -27,7 +27,7 @@ class BlogCategoryRequest extends FormRequest
             'name' => 'required',
             'description' => 'required',
             'slug' => 'nullable',
-            'image' => 'required',
+            
             
         ];
     }

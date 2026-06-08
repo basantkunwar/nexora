@@ -65,18 +65,18 @@
     <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
 
         <div class="bg-gray-50 border border-gray-200 rounded-xl p-5">
-            <h3 class="font-semibold text-gray-700">Total Blogs</h3>
-            <p class="text-2xl font-bold mt-2">125</p>
+            <h3 class="font-semibold text-gray-700">total posts</h3>
+            <p class="text-2xl font-bold mt-2">{{$blogs->count()}}</p>
         </div>
 
         <div class="bg-gray-50 border border-gray-200 rounded-xl p-5">
-            <h3 class="font-semibold text-gray-700">Total Categories</h3>
-            <p class="text-2xl font-bold mt-2">12</p>
+            <h3 class="font-semibold text-gray-700">total categories</h3>
+            <p class="text-2xl font-bold mt-2">{{$blogs->pluck('category')->count()}}</p>
         </div>
 
         <div class="bg-gray-50 border border-gray-200 rounded-xl p-5">
-            <h3 class="font-semibold text-gray-700">Total Tags</h3>
-            <p class="text-2xl font-bold mt-2">34</p>
+            <h3 class="font-semibold text-gray-700">total tags </h3>
+            <p class="text-2xl font-bold mt-2">{{$blogs->pluck('tag')->count()}}</p>
         </div>
 
     </div>

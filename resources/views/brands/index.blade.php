@@ -84,13 +84,13 @@
                                 <div class="flex justify-center gap-2">
 
                                     <!-- Edit -->
-                                    <a href=""
+                                    <a href="{{route('brands.edit', $brand->id)}}"
                                        class="px-3 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition">
                                         Edit
                                     </a>
 <a href="" class="px-3 py-2 bg-green-500 text-white"> view</a>
                                     <!-- Delete -->
-                                    <form action=""
+                                    <form action="{{ route('brands.destroy', $brand->id) }}"
                                           method="POST"
                                           onsubmit="return confirm('Are you sure?')">
 

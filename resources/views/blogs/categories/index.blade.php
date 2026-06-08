@@ -87,12 +87,12 @@
                         <td class="px-6 py-4">
                             <div class="flex justify-center gap-2">
 
-                                <a href=""
+                                <a href="{{ route('blogs.categories.edit', $category->id) }}"
                                    class="px-3 py-2 border border-slate-300 rounded-lg hover:bg-slate-100">
                                     Edit
                                 </a>
 
-                                <form action=""
+                                <form action="{{ route('blogs.categories.destroy', $category->id) }}"
                                       method="POST">
                                     @csrf
                                     @method('DELETE')

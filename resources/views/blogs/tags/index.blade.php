@@ -79,13 +79,13 @@
                             <div class="flex justify-center gap-2">
 
                                 <!-- EDIT -->
-                                <a href=""
+                                <a href="{{ route('blogs.tags.edit', $tag->id) }}"
                                    class="px-3 py-2 text-sm border border-slate-300 rounded-lg hover:bg-slate-100 transition">
                                     Edit
                                 </a>
 
                                 <!-- DELETE -->
-                                <form action=""
+                                <form action="{{ route('blogs.tags.destroy', $tag->id) }}"
                                       method="POST">
                                     @csrf
                                     @method('DELETE')

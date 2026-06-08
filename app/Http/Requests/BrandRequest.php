@@ -26,7 +26,6 @@ class BrandRequest extends FormRequest
             //
             'name' => 'required',
             'description' => 'required',
-            'image' => 'required',
             'status'=>'required'
         ];
     }

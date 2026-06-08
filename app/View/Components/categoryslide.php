@@ -1,0 +1,27 @@
+<?php
+
+namespace App\View\Components;
+
+use Closure;
+use Illuminate\Contracts\View\View;
+use Illuminate\View\Component;
+
+class categoryslide extends Component
+{
+    /**
+     * Create a new component instance.
+     */public $categories;
+    public function __construct()
+    {
+        //
+        $this->categories = \App\Models\Category::all();
+    }
+
+    /**
+     * Get the view / contents that represent the component.
+     */
+    public function render(): View|Closure|string
+    {
+        return view('components.categoryslide');
+    }
+}

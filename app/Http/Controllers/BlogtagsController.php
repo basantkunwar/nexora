@@ -21,4 +21,16 @@ class BlogtagsController extends Controller
         $tags=Blogtags::all();
         return view('blogs.tags.index',compact('tags'));
     }
+
+    public function edit($id){
+        $tag=Blogtags::find($id);
+        return view('blogs.tags.edit',compact('tag'));
+    }
+
+
+    public function update(TagRequest $request,$id){
+        $tags=$request->validated();
+        Blogtags::find($id)->update($tags);
+        return redirect()->route('blogs.tags.index');
+    }
 }

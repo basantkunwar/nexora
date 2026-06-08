@@ -97,7 +97,7 @@
                 📝 Blogs
             </a>
 
-            <a href="#"
+            <a href="{{route('settings.index')}}"
                 class="flex items-center gap-3 px-5 py-3 rounded-xl hover:bg-white/10 hover:translate-x-1 transition-all duration-300">
                 ⚙ Settings
             </a>
@@ -211,7 +211,7 @@
 
                     <div>
                         <h4 class="font-semibold text-slate-800">
-                            {{ Auth::user()->name }}
+                         <a href="{{route('home')}}"> {{ Auth::user()->name }}</a>
                         </h4>
 
                         <p class="text-xs text-slate-500">
