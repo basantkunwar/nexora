@@ -29,7 +29,7 @@
                         <th class="py-3 px-4 font-semibold text-gray-700">
                             Email
                         </th>
-
+@role('admin|super-admin')
                         <th class="py-3 px-4 font-semibold text-gray-700">
                             Role
                         </th>
@@ -37,7 +37,7 @@
                         <th class="py-3 px-4 font-semibold text-gray-700">
                             Actions
                         </th>
-
+@endrole
                     </tr>
                 </thead>
 
@@ -59,8 +59,13 @@
                             <td class="py-3 px-4 text-gray-600">
                                 {{ $user->email }}
                             </td>
-
+@role('admin|super-admin')
                             <td class="py-3 px-4 text-gray-600">
+                                   @foreach($user->getRoleNames() as $role)
+        <span class="px-2 py-1 text-xs bg-green-100 text-green-700 rounded">
+            {{ $role }}
+        </span>
+    @endforeach
                                        </td>
 
                             <td class="py-3 px-4">
@@ -72,7 +77,7 @@
                                         Manage
                                     </a>
 
-                                    <a href=""
+                                    <a href="{{ route('roles.role_assign', $user->id) }}"
                                         class="bg-gray-500 hover:bg-gray-600 text-white px-3 py-1.5 rounded-lg text-xs">
                                         Assign Role
                                     </a>
@@ -96,7 +101,7 @@
                                 </div>
 
                             </td>
-
+@endrole
                         </tr>
 
                     @endforeach

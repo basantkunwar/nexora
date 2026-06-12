@@ -8,14 +8,45 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<!-- HEAD -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+ <style>
+.category-prev,
+.category-next{
+    width:48px !important;
+    height:48px !important;
+    background:#fff;
+    border-radius:9999px;
+    box-shadow:0 4px 12px rgba(0,0,0,.12);
+}
+
+.category-prev::after,
+.category-next::after{
+    font-size:18px !important;
+    color:#374151;
+}
+
+.categorySwiper {
+    width: 100%;
+    padding: 10px 0;
+}
+
+.categorySwiper .swiper-slide {
+    height: auto;
+    display: flex;
+}
+</style>
+
 </head>
 
 <body class="font-sans bg-white">
 <!-- TOP BAR -->
-<div class="bg-gray-100 border-b border-gray-200 text-sm py-1">
+<div class="bg-gray-100 border-b top-0 border-gray-200 text-sm py-1">
     <div class="max-w-7xl mx-auto flex justify-between items-center px-4">
 
         <!-- Social -->
@@ -33,8 +64,8 @@
 
         <!-- Contact -->
         <div class="flex gap-6 text-gray-800 font-medium">
-            <span><i class="fa fa-phone"></i> +977-9761201177</span>
-            <span><i class="fa fa-envelope"></i> nexora@gmail.com</span>
+            <span><i class="fa fa-phone"></i> +977-{{settings('phone')}}</span>
+            <span><i class="fa fa-envelope"></i>{{settings('email')}}</span>
         </div>
 
     </div>
@@ -47,9 +78,9 @@
 
         <!-- LOGO -->
         <img src="{{ settings('home_banner1') ? asset('storage/'.settings('home_banner1')) : 'https://via.placeholder.com/150' }}"
-                             class="h-24 rounded-full w-[140px] border border-gray-400 cursor-pointer">
+                             class="h-24 rounded-full w-24 border border-gray-400 cursor-pointer">
         <!-- SEARCH -->
-        <form action="" class="hidden md:flex w-[600px]">
+        <form action="{{route('products.search')}}" class="hidden md:flex w-[600px]">
             <input
                 type="search"
                 name="search"
@@ -92,14 +123,14 @@
                     x-transition
                     class="absolute right-0 mt-3 w-40 bg-white shadow-lg rounded-lg overflow-hidden"
                 >
-                    <a href="/profile" class="block px-4 py-2 hover:bg-gray-100">
+                    <a href="{{ route('profile.edit') }}" class="block px-4 py-2 hover:bg-gray-100">
                         Settings
                     </a>
-
+@unlessrole('user')
                     <a href="{{route('dashboard')}}" class="block px-4 py-2 hover:bg-gray-100">
                         Dashboard
                     </a>
-
+@endunlessrole
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
 

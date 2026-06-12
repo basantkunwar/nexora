@@ -1,5 +1,5 @@
 @extends('layouts.frontend')
 @section('content')
-<x-brandpage :products="$products" :brand="$brand" />
+<x-productspage :products="$products" :categories="$categories" :brands="$brands"/>
 
 @endsection

@@ -7,9 +7,7 @@
         <!-- Header -->
         <div class="flex items-center justify-between mb-8">
             <div>
-                <h1 class="text-3xl font-bold text-slate-800">
-                    Brands
-                </h1>
+               
                 <p class="text-slate-500 mt-1">
                     Manage all product brands
                 </p>
@@ -20,7 +18,15 @@
                 + Add Brand
             </a>
         </div>
+    </div>
+<div class="mb-2">
+    <form action="{{ route('brands.index') }}" class="grid grid-cols-1 md:grid-cols-4 gap-3">
+        <input type="text" name="search" placeholder="Search..." class="border border-gray-200 rounded-md px-4 py-2 w-full" value="{{ request()->search }}">
+        <input type="text" name="description" placeholder="Description..." class="border border-gray-200 rounded-md px-4 py-2 w-full" value="{{ request()->description }}">
+        <input type="text" name="status" placeholder="Status..." class="border border-gray-200 rounded-md px-4 py-2 w-full" value="{{ request()->status }}">    
+        <button type="submit" class="bg-indigo-600 text-white px-5 py-2 rounded-xl shadow hover:bg-indigo-700 transition">Filter</button>
 
+</div>
         <!-- Table Card -->
         <div class="bg-white rounded-3xl shadow-lg border border-slate-200 overflow-hidden">
 

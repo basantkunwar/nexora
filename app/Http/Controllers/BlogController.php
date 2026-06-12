@@ -29,11 +29,41 @@ class BlogController extends Controller
     }
 
     public function index(){
-        $blogs=Blog::with('blogcategory','blogtags')->get();
+        $blogs=Blog::with('blogcategory','blogtags');
+    $blogs=$this->filters($blogs,request());
+    $blogs=$blogs->paginate(5);
         return view('blogs.index',compact('blogs'));
     }
+    private function filters($blogs,$request){
+        
+    if ($request->filled('category')) {
+        $blogs->whereHas('category', function ($q) use ($request) {
+            $q->where('name', 'like', '%' . $request->category . '%');
+        });
+    }
+
+      if ($request->filled('tag')) {
+        $blogs->whereHas('tags', function ($q) use ($request) {
+            $q->where('name', 'like', '%' . $request->tag . '%');
+        });
+      }  
+
+      if($request->filled('search')){
+        $blogs->where('title','like','%'.$request->search.'%');
+      }
+      if($request->filled('status')){
+        $blogs->where('status',$request->status);
+      }
+      if($request->filled('description')){
+        $blogs->where('description','like','%'.$request->description.'%');
+      }
+    
+        return $blogs;
+    }
 public function show(){
-    $blogs=Blog::with('blogcategory','blogtags')->get();
+    $blogs=Blog::with('blogcategory','blogtags');
+    $blogs=$this->filters($blogs,request());
+    $blogs=$blogs->paginate(5);
     return view('blogs.show',compact('blogs'));
 
 }

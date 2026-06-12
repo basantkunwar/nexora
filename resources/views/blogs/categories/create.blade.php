@@ -8,13 +8,7 @@
 
     <div class="w-full max-w-xl bg-white border border-gray-200 rounded-2xl shadow-sm p-8">
 
-        <!-- HEADER -->
-        <div class="mb-6 text-center">
-            <h2 class="text-2xl font-bold text-gray-800">Create Category</h2>
-            <p class="text-gray-500 text-sm mt-1">
-                Add a new category to organize your blogs
-            </p>
-        </div>
+       
 
         <!-- FORM -->
         <form action="{{ route('blogs.categories.store') }}" method="POST" enctype="multipart/form-data" class="space-y-5">

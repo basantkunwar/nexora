@@ -11,7 +11,7 @@
        
         @forelse($categories as $category)
 
-            <a href=""
+            <a href="{{route('frontend.category.index',$category->id)}}"
                class="flex items-center gap-3 px-5 py-3 text-gray-700 hover:bg-light-400 hover:text-black transition">
 
                 <img src="{{ asset('storage/'.$category->image) }}"

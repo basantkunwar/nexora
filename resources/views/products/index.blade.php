@@ -20,9 +20,20 @@
                 + Add Product
             </a>
         </div>
-
+    </div>
+<div class="mb-2">
+    <form action="{{ route('products.index') }}" class="grid grid-cols-1 md:grid-cols-7 gap-3">
+        <input type="text" name="search" placeholder="Search..." class="border border-gray-200 rounded-md px-4 py-2 w-full" value="{{ request()->search }}">
+        <input type="text" name="category" placeholder="Category..." class="border border-gray-200 rounded-md px-4 py-2 w-full" value="{{ request()->category }}">
+        <input type="text" name="brand" placeholder="Brand..." class="border border-gray-200 rounded-md px-4 py-2 w-full" value="{{ request()->brand }}">
+        <input type="text" name="stock" id="" placeholder="Stock..." class="border border-gray-200 rounded-md px-4 py-2 w-full" value="{{ request()->stock }}" >
+        <input type="text" name="price" placeholder="price..." class="border border-gray-200 rounded-md px-4 py-2 w-full" value="{{ request()->price }}" >
+        <input type="text" name="status" placeholder="Status..." class="border border-gray-200 rounded-md px-4 py-2 w-full" value="{{ request()->status }}">
+    <button type="submit" class="bg-indigo-600 text-white px-5 py-2 rounded-xl shadow hover:bg-indigo-700 transition">Filter</button    ></button>
+    </form>
+</div>
         <!-- Table -->
-        <div class="bg-white rounded-3xl shadow-lg overflow-hidden">
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
 
             <div class="overflow-x-auto">
 
@@ -51,7 +62,7 @@
 
                             <!-- ID -->
                             <td class="px-6 py-4">
-                                {{ $loop->iteration }}
+                                {{$products->currentPage() * $products->perPage() - $products->perPage() + $loop->index + 1}}
                             </td>
 
                             <!-- Image -->
@@ -108,14 +119,15 @@
                                        class="px-3 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">
                                         View
                                     </a>
-
+@can('update', $product)
                                     <!-- Edit -->
                                     <a href="{{route('products.edit', $product->id)}}"
                                        class="px-3 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition">
                                         Edit
                                     </a>
+@endcan
 
-                                    <!-- Delete -->
+                                   @can('delete', $product) <!-- Delete -->
                                     <form action="{{ route('products.destroy', $product->id) }}"
                                           method="POST"
                                           onsubmit="return confirm('Are you sure?')">
@@ -129,7 +141,7 @@
                                         </button>
 
                                     </form>
-
+@endcan
                                 </div>
 
                             </td>
@@ -140,11 +152,12 @@
                     </tbody>
 
                 </table>
-
             </div>
 
         </div>
-
+<div class="pt-5">
+    {{ $products->links() }}
+</div>
     </div>
 
 </div>

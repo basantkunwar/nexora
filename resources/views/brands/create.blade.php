@@ -5,9 +5,7 @@
 
         <!-- Header -->
         <div class="mb-8">
-            <h1 class="text-3xl font-bold text-slate-800">
-                Create Brand
-            </h1>
+          
             <p class="text-slate-500 mt-2">
                 Add a new brand to your store catalog.
             </p>

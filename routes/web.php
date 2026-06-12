@@ -1,18 +1,20 @@
 <?php
 
-use App\Http\Controllers\BlogController;
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\productsController;
 use App\Http\Controllers\BlogcategoryController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BlogtagsController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\usercontroller;
 use App\Http\Controllers\dashboard;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\productsController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RepairController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\usercontroller;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,7 +35,7 @@ route::get('/products/index', [productsController::class, 'index'])->name('produ
 Route::get('/products/edit/{id}', [productsController::class, 'edit'])->name('products.edit');
 Route::put('/products/update/{id}', [productsController::class, 'update'])->name('products.update');
 Route::delete('/products/delete/{id}', [productsController::class, 'delete'])->name('products.destroy');  
-
+route::get('frontend/products/search', [productsController::class, 'search'])->name('products.search');
 
 
 // brand routes
@@ -93,7 +95,31 @@ Route::delete('blogs/tags/delete/{id}', [BlogtagsController::class, 'destroy'])-
 // settings routes
 Route::get('settings/index', [SettingController::class, 'index'])->name('settings.index');
 Route::post('settings/store', [SettingController::class, 'store'])->name('settings.store');
+
+
+// roles routes
+Route::get('roles/index', [RoleController::class, 'index'])->name('roles.index');
+route::post('roles/create', [RoleController::class, 'create'])->name('roles.create');
+route::get('roles/edit/{id}', [RoleController::class, 'edit'])->name('roles.edit');
+route::get('roles/show', [RoleController::class, 'show'])->name('roles.show');
+route::put('roles/update/{id}', [RoleController::class, 'update'])->name('roles.update');
+route::delete('roles/delete/{id}', [RoleController::class, 'delete'])->name('roles.destroy');
+Route::get('roles/assign_permissions/{id}', [RoleController::class, 'assign_permission'])->name('roles.assign_permissions');
+Route::get('roles/role_assign/{id}',[RoleController::class,'showroles'])->name('roles.role_assign');
+Route::post('roles/assign/{id}',[RoleController::class,'assign'])->name('roles.assign');
+
+// permissions routes
+Route::get('permissions/index', [PermissionController::class, 'index'])->name('permissions.index');
+route::get('permissions/create', [PermissionController::class, 'create'])->name('permissions.create');
+route::get('permissions/edit/{id}', [PermissionController::class, 'edit'])->name('permissions.edit');
+route::post('permissions/store', [PermissionController::class, 'store'])->name('permissions.store');
+route::put('permissions/update/{id}', [PermissionController::class, 'update'])->name('permissions.update');
+route::delete('permissions/delete/{id}', [PermissionController::class, 'delete'])->name('permissions.destroy');
+Route::post('permissions/assign/{id}',[PermissionController::class,'assign'])->name('permissions.assign');
+
 // frontend routes
+
+
 // repair the routes
 Route::get('frontend/repairs/repair', [RepairController::class, 'repair'])->name('frontend.repairs.repair');
 
@@ -104,4 +130,7 @@ Route::get('frontend/blogs/blogdetails/{id}', [BlogController::class, 'blogdetai
 // productdetails route or category and brand wise products pages route
 Route::get('frontend/brand/{id}/index/',[BrandController::class,'details'])->name('frontend.brand.index');
 Route::get('frontend/category/{id}/index',[CategoryController::class,'details'])->name('frontend.category.index');
+
+// productsdetails route
+Route::get('frontend/products/productdetails/{id}',[productsController::class,'productdetails'])->name('frontend.product.productdetails');
 require __DIR__.'/auth.php';

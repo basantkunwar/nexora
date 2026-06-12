@@ -103,6 +103,7 @@
 
         </div>
     </div>
+
 <script>
 function decreaseQty(btn) {
     let input = btn.parentElement.querySelector('input');
@@ -121,3 +122,56 @@ function increaseQty(btn) {
 
 <!-- FONT AWESOME -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- BEFORE </body> -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+@stack('scripts')
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    new Swiper(".Swiper", {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+
+        navigation: {
+            nextEl: ".category-next",
+            prevEl: ".category-prev",
+        },
+
+        breakpoints: {
+            640: { slidesPerView: 2 },
+            768: { slidesPerView: 3 },
+            1024: { slidesPerView: 4 },
+            1280: { slidesPerView: 5 }
+        }
+    });
+});
+</script>
+<script>
+function openFilterMenu() {
+    document.getElementById('filterMenu')
+        .classList.remove('translate-x-full');
+
+    document.getElementById('overlay')
+        .classList.remove('hidden');
+}
+
+function closeFilterMenu() {
+    document.getElementById('filterMenu')
+        .classList.add('translate-x-full');
+
+    document.getElementById('overlay')
+        .classList.add('hidden');
+}
+</script>
+
+<script>
+lucide.createIcons();
+</script>
+
+</body>
+</html>

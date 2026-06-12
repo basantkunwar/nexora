@@ -1,16 +1,13 @@
 <x-app-layout>
 
+    <x-slot name="pageTitle">
+        Dashboard
+    </x-slot>
+
     <div class="py-8 px-6 bg-slate-50 min-h-screen">
 
         <!-- Header -->
-        <div class="mb-8">
-            <h1 class="text-3xl font-bold text-slate-800">
-                Dashboard Overview
-            </h1>
-            <p class="text-slate-500 mt-1">
-                Welcome back! Here's what's happening in your store.
-            </p>
-        </div>
+      
 
         <!-- Stats Grid -->
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
@@ -28,7 +25,7 @@
                     </div>
 
                     <div class="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center">
-                        📦
+                     <i class="fa-solid fa-cart-shopping"></i>
                     </div>
                 </div>
             </div>
@@ -46,7 +43,7 @@
                     </div>
 
                     <div class="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center">
-                        👥
+                     <i class="fa-solid fa-users"></i> 
                     </div>
                 </div>
             </div>
@@ -59,12 +56,12 @@
                             Total Categories
                         </p>
                         <h2 class="text-3xl font-bold text-slate-900 mt-2">
-                           {{ $products->pluck('category_id')->unique()->count() }}
+                           {{ $category->count()}}
                         </h2>
                     </div>
 
                     <div class="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center">
-                        🏷️
+                 <i class="fa-solid fa-tags"></i> 
                     </div>
                 </div>
             </div>
@@ -77,12 +74,12 @@
                             Total Brands
                         </p>
                         <h2 class="text-3xl font-bold text-slate-900 mt-2">
-                           {{ $products->pluck('brand_id')->unique()->count() }}
+                           {{ $brand->count() }}
                         </h2>
                     </div>
 
                     <div class="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center">
-                        ⭐
+                        <i class="fa-solid fa-star"></i> 
                     </div>
                 </div>
             </div>
@@ -95,12 +92,12 @@
                             Total Blogs
                         </p>
                         <h2 class="text-3xl font-bold text-slate-900 mt-2">
-                            {{-- {{ $totalBlogs }} --}}
+                            {{ $blog->count() }}
                         </h2>
                     </div>
 
                     <div class="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center">
-                        📝
+                       <i class="fa-solid fa-newspaper"></i> 
                     </div>
                 </div>
             </div>

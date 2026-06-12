@@ -77,7 +77,203 @@
     </div>
 
 </section>
-@endsection
-@section('contents')
+{{-- category slide --}}
+<section class="py-6 bg-white">
+    <div class="px-4 sm:px-6 lg:px-8">
 
+        <h2 class="text-2xl font-bold mb-6">
+            Categories
+        </h2>
+
+        <div class="relative">
+
+            <x-categoryslide />
+
+            <div class="category-prev swiper-button-prev"></div>
+            <div class="category-next swiper-button-next"></div>
+
+        </div>
+
+    </div>
+</section>
+
+<br>
+{{-- all productcts --}}
+<section class="py-6 bg-white">
+    <div class="px-4 sm:px-6 lg:px-8">
+
+        <h2 class="text-2xl font-bold mb-6">
+            All Products
+        </h2>
+
+        <div class="relative">
+
+            <x-allproductsslide />
+
+            <div class="category-prev swiper-button-prev"></div>
+            <div class="category-next swiper-button-next"></div>
+
+        </div>
+
+    </div>
+</section>
+
+
+
+{{-- brands--}}
+<section class="py-6 bg-white">
+    <div class="px-4 sm:px-6  lg:px-8">
+
+        <h2 class="text-2xl font-bold mb-6">
+            Brands
+        </h2>
+
+        <div class="relative">
+
+            <x-brandslide />
+
+            <div class="category-prev swiper-button-prev"></div>
+            <div class="category-next swiper-button-next"></div>
+
+        </div>
+
+    </div>
+</section>
+
+
+
+
+{{-- letest products --}}
+<section class="py-6 bg-white">
+    <div class="px-4 pb-6 sm:px-6 lg:px-8">
+
+        <h2 class="text-2xl font-bold mb-6">
+            Letest Products
+        </h2>
+
+        <div class="relative">
+
+            <x-leteastproducts/>
+
+            <div class="category-prev swiper-button-prev"></div>
+            <div class="category-next swiper-button-next"></div>
+
+        </div>
+
+    </div>
+</section>
+
+
+
+{{-- vlogs are  --}}
+<section class="py-6 bg-white">
+    <div class="px-4 pb-6 sm:px-6 lg:px-8">
+
+        <h2 class="text-2xl font-bold mb-6">
+            blogs are
+        </h2>
+
+        <div class="relative">
+
+            <x-blogcomponent/>
+
+            <div class="category-prev swiper-button-prev"></div>
+            <div class="category-next swiper-button-next"></div>
+
+        </div>
+
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+
+            <!-- FEATURE 1 -->
+            <div class="flex flex-col items-center">
+                
+                <div class="w-20 h-20 rounded-full bg-blue-600 flex items-center justify-center shadow-lg">
+                    <!-- Truck Icon -->
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3 7h12v10H3V7zm12 3h4l2 2v5h-6V10zM5 17a2 2 0 100 4 2 2 0 000-4zm12 0a2 2 0 100 4 2 2 0 000-4z"/>
+                    </svg>
+                </div>
+
+                <h3 class="mt-5 text-2xl font-bold text-gray-900">
+                    Fast Delivery
+                </h3>
+
+                <p class="mt-3 text-gray-500 max-w-sm">
+                    Enjoy fast delivery all over Nepal with our reliable shipping network.
+                </p>
+            </div>
+
+            <!-- FEATURE 2 -->
+            <div class="flex flex-col items-center">
+
+                <div class="w-20 h-20 rounded-full bg-blue-600 flex items-center justify-center shadow-lg">
+                    <!-- Shield Icon -->
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 2l7 4v6c0 5-3 9-7 10-4-1-7-5-7-10V6l7-4z"/>
+                    </svg>
+                </div>
+
+                <h3 class="mt-5 text-2xl font-bold text-blue-600">
+                    100% Genuine
+                </h3>
+
+                <p class="mt-3 text-gray-500 max-w-sm">
+                    Trust us with only genuine and authentic products from verified suppliers.
+                </p>
+            </div>
+
+            <!-- FEATURE 3 -->
+            <div class="flex flex-col items-center">
+
+                <div class="w-20 h-20 rounded-full bg-blue-600 flex items-center justify-center shadow-lg">
+                    <!-- Tag Icon -->
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M7 7h10l4 4-10 10-4-4V7z"/>
+                    </svg>
+                </div>
+
+                <h3 class="mt-5 text-2xl font-bold text-gray-900">
+                    Discounts & Offers
+                </h3>
+
+                <p class="mt-3 text-gray-500 max-w-sm">
+                    Exclusive discounts and offers on every occasion and special events.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
 @endsection

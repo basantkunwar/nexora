@@ -2,8 +2,4 @@
 <main>
 @yield('content')
 </main>
-<main>
-    @yield('contents')
-
-</main>
-    @include('layouts.partials.footer')
+ @include('layouts.partials.footer')
