@@ -22,10 +22,53 @@
               <i class="fa-solid fa-chart-line"></i> Dashboard
             </a>
 
-            <a href="#"
-                class="flex items-center gap-3 px-5 py-3 rounded-xl hover:bg-white/10 hover:translate-x-1 transition-all duration-300">
-             <i class="fa-solid fa-box"></i> Orders
-            </a>
+          <!-- Orders Dropdown -->
+<div x-data="{ open: false }">
+
+    <!-- Parent -->
+    <button
+        @click="open = !open"
+        class="w-full flex items-center justify-between px-5 py-3 rounded-xl hover:bg-white/10 transition-all duration-300">
+
+        <div class="flex items-center gap-3">
+            <i class="fa-solid fa-clipboard-list text-lg"></i>
+            <span>Orders</span>
+        </div>
+
+        <i
+            class="fa-solid"
+            :class="open ? 'fa-chevron-up' : 'fa-chevron-down'">
+        </i>
+
+    </button>
+
+    <!-- Dropdown -->
+    <div
+        x-show="open"
+        x-transition
+        class="ml-8 mt-2 space-y-2">
+
+        <a href="{{ route('orders.index') }}"
+            class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-white/10 transition">
+
+            <i class="fa-solid fa-receipt text-blue-300"></i>
+
+            <span>Orders</span>
+
+        </a>
+
+        <a href="{{route('orderstatus.index')}}"
+            class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-white/10 transition">
+
+            <i class="fa-solid fa-box-open text-green-300"></i>
+
+            <span>Order status</span>
+
+        </a>
+
+    </div>
+
+</div>
 
             <div x-data="{ openProducts: false }">
 
@@ -58,6 +101,12 @@
                     x-transition
                     class="ml-8 mt-3 space-y-2 border-l border-white/10 pl-4">
 
+                    
+ <a href="{{ route('products.create') }}"
+                        class="block px-4 py-2 text-sm text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition">
+                        <i class="fa-solid fa-plus text-white-500 text-sm"></i> Add products
+                    </a>
+
                     <a href="{{ route('products.index') }}"
                         class="block px-4 py-2 text-sm text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition">
                        <i class="fa-solid fa-eye text-white-500 text-sm"></i> view
@@ -68,10 +117,6 @@
                         ⭐ Reviews
                     </a>
 
- <a href="{{ route('products.create') }}"
-                        class="block px-4 py-2 text-sm text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition">
-                        <i class="fa-solid fa-plus text-white-500 text-sm"></i> Add products
-                    </a>
 
                 </div>
 
@@ -188,7 +233,7 @@
 </div>
 
             
-            <a href=""
+            <a href="{{route('sliders.index')}}"
                 class="flex items-center gap-3 px-5 py-3 rounded-xl hover:bg-white/10 hover:translate-x-1 transition-all duration-300">
         <i class="fa-solid fa-sliders"></i> Sliders
             </a>

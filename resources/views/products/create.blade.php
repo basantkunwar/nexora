@@ -58,7 +58,7 @@
                         </div>
 
                         <!-- Brand -->
-                       <x-createbrand/>
+                       <x-createbrand />
 
                         <!-- Price -->
                         <div>
@@ -87,7 +87,7 @@
                         </div>
 
                         <!-- Category -->
-                        <x-createcategory/>
+                        <x-createcategory />
 
                         <!-- Stock -->
                         <div>

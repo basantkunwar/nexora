@@ -1,5 +1,9 @@
 <x-guest-layout>
     <!-- Session Status -->
+    {{-- <img src="{{ settings('home_banner1')
+    ? asset('storage/' . settings('home_banner1'))
+    : '' }}"
+    alt="" class="w-8 h-8"> --}}
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form method="POST" action="{{ route('login') }}">

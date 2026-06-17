@@ -12,7 +12,7 @@
 
         @foreach ($brands as $brand)
             <option value="{{ $brand->id }}"
-                {{ $brand->id==$brand->id ? 'selected' : ''}}>
+                {{old('brand_id',$product->brand_id??'')==$brand->id ? 'selected' : ''}}>
                 {{ $brand->name }}
             </option>
         @endforeach

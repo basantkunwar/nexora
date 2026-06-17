@@ -5,10 +5,15 @@ use App\Models\Blogcategory;
 use App\Http\Requests\BlogCategoryRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Services\BlogcategoryService;
 
 class BlogcategoryController extends Controller
 {
     //
+    private $BlogcategoryService;
+    public function __construct(BlogcategoryService $BlogcategoryService){
+        $this->BlogcategoryService=$BlogcategoryService;
+    }
     public function create(){
         return view('blogs.categories.create');
     }
@@ -26,8 +31,22 @@ public function store(BlogCategoryRequest $request){
     return view('blogs.categories.create');
   
 }
+// private function filters($categories, $request){
+//     if ($request->filled('search')) {
+//         $categories->where('name', 'like', '%' . $request->search . '%');
+//     }
+//     if($request->filled('status')){
+//         $categories->where('status', $request->status);
+//     }
+//     if($request->filled('description')){
+//         $categories->where('description', 'like', '%' . $request->description . '%');
+//     }
+//     return $categories;
+// }
 public function index(){
-    $categories=Blogcategory::get();
+    $categories=Blogcategory::query();
+    $categories=$this->BlogcategoryService->filters($categories,request());
+    $categories=$categories->paginate(5);
     return view('blogs.categories.index' ,compact('categories'));
 } 
 public function edit($id){

@@ -24,11 +24,52 @@
 <div class="mb-2">
     <form action="{{ route('products.index') }}" class="grid grid-cols-1 md:grid-cols-7 gap-3">
         <input type="text" name="search" placeholder="Search..." class="border border-gray-200 rounded-md px-4 py-2 w-full" value="{{ request()->search }}">
-        <input type="text" name="category" placeholder="Category..." class="border border-gray-200 rounded-md px-4 py-2 w-full" value="{{ request()->category }}">
-        <input type="text" name="brand" placeholder="Brand..." class="border border-gray-200 rounded-md px-4 py-2 w-full" value="{{ request()->brand }}">
-        <input type="text" name="stock" id="" placeholder="Stock..." class="border border-gray-200 rounded-md px-4 py-2 w-full" value="{{ request()->stock }}" >
-        <input type="text" name="price" placeholder="price..." class="border border-gray-200 rounded-md px-4 py-2 w-full" value="{{ request()->price }}" >
-        <input type="text" name="status" placeholder="Status..." class="border border-gray-200 rounded-md px-4 py-2 w-full" value="{{ request()->status }}">
+        <select name="category"
+    class="border border-gray-200 rounded-md px-4 py-2 w-full">
+
+    <option value=""> Category</option>
+
+    @foreach ($categories as $category)
+        <option value="{{ $category->name }}"
+            {{ request('category') == $category->name ? 'selected' : '' }}>
+            {{ $category->name }}
+        </option>
+    @endforeach
+
+</select>
+   
+         <select name="brand"
+    class="border border-gray-200 rounded-md px-4 py-2 w-full">
+
+    <option value="">Select brand</option>
+
+    @foreach ($brands as $brand)
+        <option value="{{ $brand->name }}"
+            {{ request('brand') == $brand->name ? 'selected' : '' }}>
+            {{ $brand->name }}
+        </option>
+    @endforeach
+
+</select>
+    <input type="number"name="min_stock" placeholder="Min Stock..." class="border border-gray-200 rounded-md px-4 py-2 w-full" value="{{ request('min_stock') }}">
+
+<input type="number" name="max_stock" placeholder="Max Stock..." class="border border-gray-200 rounded-md px-4 py-2 w-full" value="{{ request('max_stock') }}">
+       <select name="status"
+    class="border border-gray-200 rounded-md px-4 py-2 w-full">
+
+    <option value="">Select Status</option>
+
+    <option value="available"
+        {{ request('status') == 'available' ? 'selected' : '' }}>
+        Available
+    </option>
+
+    <option value="outofstock"
+        {{ request('status') == 'outofstock' ? 'selected' : '' }}>
+        outofstock
+    </option>
+
+</select>
     <button type="submit" class="bg-indigo-600 text-white px-5 py-2 rounded-xl shadow hover:bg-indigo-700 transition">Filter</button    ></button>
     </form>
 </div>
@@ -119,15 +160,15 @@
                                        class="px-3 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">
                                         View
                                     </a>
-@can('update', $product)
+
                                     <!-- Edit -->
                                     <a href="{{route('products.edit', $product->id)}}"
                                        class="px-3 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition">
                                         Edit
                                     </a>
-@endcan
 
-                                   @can('delete', $product) <!-- Delete -->
+
+                                 <!-- Delete -->
                                     <form action="{{ route('products.destroy', $product->id) }}"
                                           method="POST"
                                           onsubmit="return confirm('Are you sure?')">
@@ -141,7 +182,7 @@
                                         </button>
 
                                     </form>
-@endcan
+
                                 </div>
 
                             </td>

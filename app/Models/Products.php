@@ -15,4 +15,10 @@ class Products extends Model
     public function brand(){
         return $this->belongsTo(Brand::class);
     }
+    public function cartItems(){
+        return $this->hasMany(cartItems::class);
+    }
+    public function orderItems(){
+        return $this->hasMany(OrderItems::class);
+    }
 }

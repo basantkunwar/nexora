@@ -11,10 +11,12 @@ class blogcategories extends Component
     /**
      * Create a new component instance.
      */public $categories;
-    public function __construct()
+     public $blog;
+    public function __construct($blog=null)
     {
         //
         $this->categories=Blogcategory::all();
+        $this->blog=$blog;
     }
 
     /**

@@ -4,20 +4,30 @@ use App\Http\Controllers\BlogcategoryController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BlogtagsController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CartItemsController;
+use App\Http\Controllers\CartsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\dashboard;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderItemsController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\productsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RepairController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\SliderController;
 use App\Http\Controllers\usercontroller;
+use App\Models\Slider;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    $sliders = Slider::where('status', 1)
+    ->orderBy('position')
+    ->get();
+
+return view('welcome', compact('sliders'));
 })->name('home');
 
 Route::get('/dashboard', [dashboard::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
@@ -117,7 +127,44 @@ route::put('permissions/update/{id}', [PermissionController::class, 'update'])->
 route::delete('permissions/delete/{id}', [PermissionController::class, 'delete'])->name('permissions.destroy');
 Route::post('permissions/assign/{id}',[PermissionController::class,'assign'])->name('permissions.assign');
 
+// sliders routes
+Route::get('sliders/index', [SliderController::class, 'index'])->name('sliders.index');
+route::get('sliders/create', [SliderController::class, 'create'])->name('sliders.create');
+route::post('sliders/store', [SliderController::class, 'store'])->name('sliders.store');
+route::get('sliders/edit/{slider}', [SliderController::class, 'edit'])->name('sliders.edit');
+route::put('sliders/update/{id}', [SliderController::class, 'update'])->name('sliders.update');
+route::delete('sliders/delete/{id}', [SliderController::class, 'delete'])->name('sliders.destroy');
+
+// carts routes
+Route::get('cart/index', [CartsController::class, 'index']) ->middleware('auth')->name('carts.index');
+Route::post('cart/store', [CartsController::class, 'store'])->middleware('auth')->name('carts.store');
+Route::delete('cart/delete/{id}', [CartsController::class, 'delete'])->name('carts.destroy');
+Route::post('cart/update/{id}', [CartsController::class, 'update'])->name('carts.update');
+Route::get('cart/checkout', [CartsController::class, 'checkout'])->name('carts.checkout');
+
+// cartitems routes
+Route::get('cartitems/index', [CartItemsController::class, 'index'])->name('cartitems.index');
+Route::post('cartitems/store/', [CartItemsController::class, 'store'])->name('cartitems.store');
+Route::delete('cartitems/delete/{id}', [CartItemsController::class, 'delete'])->name('cartitems.destroy');
+Route::post('cartitems/update/{id}', [CartItemsController::class, 'update'])->name('cartitems.update');
+Route::get('cartitems/checkout', [CartItemsController::class, 'checkout'])->name('cartitems.checkout');
+
+//order routes
+Route::get('order/index', [OrderController::class, 'index'])->name('orders.index');
+Route::get('order/show/{id}',[OrderController::class,'show'])->name('orders.show');
+Route::post('orders/store/{carts}', [OrderController::class, 'store'])->name('orders.store');
+Route::delete('orders/delete/{id}', [OrderController::class, 'delete'])->name('orders.destroy');
+Route::post('orders/update/{id}', [OrderController::class, 'update'])->name('orders.update');
+Route::get('orders/checkout', [OrderController::class, 'checkout'])->name('orders.checkout');
+Route::patch('/order/{order}/confirm', [OrderController::class, 'confirm'])
+    ->name('orders.confirm');
+    Route::patch('/order/{order}/status', [OrderController::class,'changeStatus'])
+    ->name('orders.status');
+
+// order item route
+Route::get('orderstatus/index',[OrderItemsController::class,'index'])->name('orderstatus.index');
 // frontend routes
+
 
 
 // repair the routes

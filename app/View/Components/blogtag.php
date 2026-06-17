@@ -11,10 +11,12 @@ class blogtag extends Component
     /**
      * Create a new component instance.
      */public $tags;
-    public function __construct()
+     public $blog;
+    public function __construct($blog=null)
     {
         //
         $this->tags=Blogtags::all();
+        $this->blog=$blog;
     }
 
     /**

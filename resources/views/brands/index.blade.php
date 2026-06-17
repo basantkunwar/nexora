@@ -21,9 +21,34 @@
     </div>
 <div class="mb-2">
     <form action="{{ route('brands.index') }}" class="grid grid-cols-1 md:grid-cols-4 gap-3">
-        <input type="text" name="search" placeholder="Search..." class="border border-gray-200 rounded-md px-4 py-2 w-full" value="{{ request()->search }}">
+          <select name="category"
+    class="border border-gray-200 rounded-md px-4 py-2 w-full">
+
+    <option value="">brand name</option>
+
+    @foreach ($brands as $brand)
+        <option value="{{ $brand->name }}"
+            {{ request('brand') == $brand->name ? 'selected' : '' }}>
+            {{ $brand->name }}
+        </option>
+    @endforeach
         <input type="text" name="description" placeholder="Description..." class="border border-gray-200 rounded-md px-4 py-2 w-full" value="{{ request()->description }}">
-        <input type="text" name="status" placeholder="Status..." class="border border-gray-200 rounded-md px-4 py-2 w-full" value="{{ request()->status }}">    
+        <select name="status"
+    class="border border-gray-200 rounded-md px-4 py-2 w-full">
+
+    <option value="">Select Status</option>
+
+    <option value="available"
+        {{ request('status') == 'available' ? 'selected' : '' }}>
+        Available
+    </option>
+
+    <option value="not_available"
+        {{ request('status') == 'outofstock' ? 'selected' : '' }}>
+        outofstock
+    </option>
+
+</select>
         <button type="submit" class="bg-indigo-600 text-white px-5 py-2 rounded-xl shadow hover:bg-indigo-700 transition">Filter</button>
 
 </div>

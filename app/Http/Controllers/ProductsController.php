@@ -35,21 +35,24 @@ class ProductsController extends Controller
         $products->where('name', 'like', '%' . $request->search . '%');
     }
 
-    if ($request->filled('category')) {
-        $products->whereHas('category', function ($q) use ($request) {
-            $q->where('name', 'like', '%' . $request->category . '%');
-        });
-    }
+ if ($request->filled('category')) {
+    $products->whereHas('category', function ($q) use ($request) {
+        $q->where('name', 'like', '%' . $request->category . '%');
+    });
+}
 
     if ($request->filled('brand')) {
         $products->whereHas('brand', function ($q) use ($request) {
             $q->where('name', 'like', '%' . $request->brand . '%');
         });
     }
+if ($request->filled('min_stock')) {
+    $products->where('stock', '>=', $request->min_stock);
+}
 
-    if ($request->filled('stock')) {
-        $products->where('stock', $request->stock);
-    }
+if ($request->filled('max_stock')) {
+    $products->where('stock', '<=', $request->max_stock);
+} 
 
     if ($request->filled('price')) {
         $products->where('price', $request->price);
@@ -61,10 +64,12 @@ class ProductsController extends Controller
 
     return $products;
 }    public function index(Request $request){
+    $categories = Category::all();
+    $brands = Brand::all();
     $products = Products::with(['brand', 'category']);
     $products=$this->filters($products,$request);
     $products = $products->paginate(16);   
-    return view('products.index',compact('products'));
+    return view('products.index',compact('products','categories','brands'));
        
     }
     public function edit($id){

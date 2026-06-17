@@ -18,10 +18,10 @@
         <div class="flex flex-wrap gap-3 border-b mb-6">
 
             <button type="button" onclick="openTab('general', this)" class="tab-btn active-tab">General</button>
-            <button type="button" onclick="openTab('branding', this)" class="tab-btn">Branding</button>
+            <button type="button" onclick="openTab('branding', this)" class="tab-btn">system logo</button>
             <button type="button" onclick="openTab('social', this)" class="tab-btn">Social</button>
             <button type="button" onclick="openTab('seo', this)" class="tab-btn">SEO</button>
-            <button type="button" onclick="openTab('ecommerce', this)" class="tab-btn">E-commerce</button>
+            <button type="button" onclick="openTab('ecommerce', this)" class="tab-btn">defaults</button>
 
         </div>
 
@@ -123,21 +123,21 @@
 
                 <!-- HOME BANNERS -->
                 <div>
-                        <label>Home Banner 1</label>
+                        <label>top banner</label>
                         <input type="file" name="home_banner1" class="hidden" id="home_Banner1Input">
                         <img src="{{ settings('home_banner1') ? asset('storage/'.settings('home_banner1')) : 'https://via.placeholder.com/150' }}"
                              class="h-24 border rounded-lg cursor-pointer"
                              onclick="home_Banner1Input.click()">
                     </div>
 <div>
-                        <label>Home Banner 2</label>
+                        <label>login page logo</label>
                         <input type="file" name="home_banner2" class="hidden" id="home_Banner2Input">
                         <img src="{{ settings('home_banner2') ? asset('storage/'.settings('home_banner2')) : 'https://via.placeholder.com/150' }}"
                              class="h-24 border rounded-lg cursor-pointer"
                              onclick="home_Banner2Input.click()">
                     </div>
 <div>
-                        <label>Home Banner 3</label>
+                        <label>register page logo</label>
                         <input type="file" name="home_banner3" class="hidden" id="home_Banner3Input">
                         <img src="{{ settings('home_banner3') ? asset('storage/'.settings('home_banner3')) : 'https://via.placeholder.com/150' }}"
                              class="h-24 border rounded-lg cursor-pointer"

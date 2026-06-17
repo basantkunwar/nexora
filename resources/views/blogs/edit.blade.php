@@ -77,7 +77,7 @@
                     <div class="p-5 space-y-4">
 
                         <!-- CATEGORY -->
-                       <x-blogcategories/>
+                       <x-blogcategories :blog="$blog"/>
 
                        {{-- current image --}}
                        <div class="mb-6">
@@ -131,7 +131,7 @@
                         </div>
 
                         <!-- TAGS -->
-                        <x-blogtag/>
+                        <x-blogtag  :blog="$blog"/>
 
                         <!-- SUBMIT -->
                         <button type="submit"

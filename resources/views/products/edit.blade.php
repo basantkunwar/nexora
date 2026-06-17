@@ -41,7 +41,7 @@
                         </div>
 
                         <!-- Brand -->
-                       <x-createbrand/>
+                       <x-createbrand :product="$product"/>
 
                         <!-- Price -->
                         <div>
@@ -70,7 +70,7 @@
                         </div>
 
                         <!-- Category -->
-                        <x-createcategory/>
+                        <x-createcategory :product="$product"/>
 
                         <!-- Stock -->
                         <div>

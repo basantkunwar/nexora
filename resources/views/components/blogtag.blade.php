@@ -12,7 +12,7 @@
 
         @foreach ($tags as $tag)
             <option value="{{ $tag->id }}"
-                {{ $tag->id==$tag->id? 'selected' : ''}}>
+                {{ old('blogtag_id', $blog->blogtag_id ?? '')==$tag->id? 'selected' : ''}}>
                 {{ $tag->name }}
             </option>
         @endforeach

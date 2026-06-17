@@ -66,7 +66,7 @@
             </div>
 
             <!-- FORM PUSHED TO BOTTOM -->
-            <form action="" method="POST" class="mt-auto mt-4">
+            <form action="{{ route('carts.store') }}" method="POST" class="mt-auto mt-4">
                 @csrf
 
                 <input type="hidden" name="product_id" value="{{ $product->id }}">
@@ -74,6 +74,7 @@
                 <!-- QUANTITY -->
                 <div class="flex items-center justify-between border rounded-xl px-3 py-2">
                     <button type="button" onclick="decreaseQty(this)">−</button>
+               
 
                     <input type="number"
                            name="quantity"

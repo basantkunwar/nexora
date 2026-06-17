@@ -100,7 +100,7 @@ href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
                 <i class="fa fa-bell text-3xl"></i>
             </a>
 
-            <a href="#">
+            <a href="{{route('carts.index')}}">
                 <i class="fa fa-shopping-cart text-3xl"></i>
             </a>
 

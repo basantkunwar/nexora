@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 
 @section('content')
-<section
+{{-- <section
     x-data="{
         active: 0,
         slides: [
@@ -76,7 +76,157 @@
         </template>
     </div>
 
+</section> --}}
+
+
+{{-- slider test --}}
+<section
+    x-data="{
+        active: 0,
+        total: {{ $sliders->count() }},
+        init() {
+            if(this.total > 1){
+                setInterval(() => {
+                    this.active = (this.active + 1) % this.total;
+                }, 5000);
+            }
+        }
+    }"
+    class="relative w-full overflow-hidden bg-gray-100">
+
+    {{-- Slides --}}
+    <div class="relative h-[250px] sm:h-[350px] lg:h-[550px]">
+
+        @foreach($sliders as $index => $slider)
+
+            @php
+
+                $textColor = match($slider->text_color){
+                    'black' => 'text-black',
+                    'red' => 'text-red-500',
+                    'green' => 'text-green-500',
+                    'blue' => 'text-blue-500',
+                    'yellow' => 'text-yellow-400',
+                    'orange' => 'text-orange-500',
+                    'purple' => 'text-purple-500',
+                    'pink' => 'text-pink-500',
+                    'brown' => 'text-amber-700',
+                    'gray' => 'text-gray-500',
+                    default => 'text-white'
+                };
+
+                $alignment = match($slider->text_alignment){
+                    'center' => 'items-center text-center',
+                    'right' => 'items-end text-right',
+                    default => 'items-start text-left'
+                };
+
+            @endphp
+
+           <div
+    x-show="active === {{ $index }}"
+    x-transition:enter="transition ease-out duration-700"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
+    x-transition:leave="transition ease-in duration-500"
+    x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0"
+    class="absolute inset-0">
+
+    <a href="{{ $slider->button_link ?: '#' }}"
+       target="_blank"
+       class="block absolute inset-0">
+
+        {{-- Desktop Image --}}
+        <img
+            src="{{ asset('storage/'.$slider->desktop_image) }}"
+            class="hidden md:block w-full h-full object-cover"
+            alt="{{ $slider->title }}">
+
+        {{-- Mobile Image --}}
+        <img
+            src="{{ asset('storage/'.($slider->mobile_image ?: $slider->desktop_image)) }}"
+            class="block md:hidden w-full h-full object-cover"
+            alt="{{ $slider->title }}">
+
+        {{-- Overlay --}}
+        <div class="absolute inset-0 bg-black/40"></div>
+
+        {{-- Content --}}
+        <div class="absolute inset-0 flex {{ $alignment }}">
+            <div class="container mx-auto px-6 lg:px-16 flex flex-col justify-center h-full max-w-7xl">
+
+                <div class="max-w-2xl">
+
+                    {{-- @if($slider->title)
+                        <h2 class="text-3xl md:text-5xl font-bold mb-4 {{ $textColor }}">
+                            {{ $slider->title }}
+                        </h2>
+                    @endif
+
+                    @if($slider->subtitle)
+                        <p class="text-sm md:text-lg mb-6 {{ $textColor }}">
+                            {{ $slider->subtitle }}
+                        </p>
+                    @endif --}}
+
+                    @if($slider->button_text)
+                        <span
+                            class="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition">
+                            {{ $slider->button_text }}
+                        </span>
+                    @endif
+
+                </div>
+
+            </div>
+        </div>
+
+    </a>
+
+</div>
+        @endforeach
+
+    </div>
+
+    {{-- Previous --}}
+    <button
+        @click="active = (active - 1 + total) % total"
+        class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur p-3 rounded-full text-white hover:bg-white/30">
+
+        ❮
+    </button>
+
+    {{-- Next --}}
+    <button
+        @click="active = (active + 1) % total"
+        class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur p-3 rounded-full text-white hover:bg-white/30">
+
+        ❯
+    </button>
+
+    {{-- Dots --}}
+    <div class="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2">
+
+        @foreach($sliders as $index => $slider)
+
+            <button
+                @click="active = {{ $index }}"
+                :class="active === {{ $index }}
+                    ? 'bg-white w-8'
+                    : 'bg-white/50 w-3'"
+                class="h-3 rounded-full transition-all duration-300">
+            </button>
+
+        @endforeach
+
+    </div>
+
 </section>
+
+
+
+
 {{-- category slide --}}
 <section class="py-6 bg-white">
     <div class="px-4 sm:px-6 lg:px-8">

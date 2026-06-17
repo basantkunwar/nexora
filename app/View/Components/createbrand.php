@@ -12,10 +12,12 @@ class createbrand extends Component
     /**
      * Create a new component instance.
      */public $brands;
-    public function __construct()
+     public $product;
+    public function __construct($product=null)
     {
         //
         $this->brands=Brand::all();
+        $this->product=$product;
     }
 
     /**

@@ -13,7 +13,18 @@
     </div>
     <div class="mb-2">
         <form action="" class="grid grid-cols-1 md:grid-cols-4 gap-3">
-            <input type="text" name="search" placeholder="Search..." class="border border-gray-200 rounded-md px-4 py-2 w-full" value="{{ request()->search }}" >
+                 <select name="category"
+    class="border border-gray-200 rounded-md px-4 py-2 w-full">
+
+    <option value="">Select Category</option>
+
+    @foreach ($categories as $category)
+        <option value="{{ $category->name }}"
+            {{ request('category') == $category->name ? 'selected' : '' }}>
+            {{ $category->name }}
+        </option>
+    @endforeach
+</select>
             <input type="text" name="description" placeholder="Description..." class="border border-gray-200 rounded-md px-4 py-2 w-full" value="{{ request()->description }}">
             <input type=" text" name="slug" placeholder="Slug..." class="border border-gray-200 rounded-md px-4 py-2 w-full" value="{{ request()->slug }}">
             <button type="submit" class="bg-indigo-600 text-white px-5 py-2 rounded-xl shadow hover:bg-indigo-700 transition">Filter</button>
