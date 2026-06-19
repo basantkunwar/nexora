@@ -169,9 +169,9 @@
 
 
                                  <!-- Delete -->
-                                    <form action="{{ route('products.destroy', $product->id) }}"
+                                    <form action="{{ route('products.destroy', $product->id) }} "
                                           method="POST"
-                                          onsubmit="return confirm('Are you sure?')">
+                                          onsubmit="return confirm('Are you sure to delete this product {{$product->name}}?')">
 
                                         @csrf
                                         @method('DELETE')

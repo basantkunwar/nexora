@@ -170,12 +170,12 @@
                         </p>
                     @endif --}}
 
-                    @if($slider->button_text)
+                    {{-- @if($slider->button_text)
                         <span
                             class="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition">
                             {{ $slider->button_text }}
                         </span>
-                    @endif
+                    @endif --}}
 
                 </div>
 

@@ -194,6 +194,9 @@
                 </form>
             @endif
 
+            <div class="flex justify-end mt-4 ">
+                <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition">print</button>
+            </div>
         </div>
 
     </div>

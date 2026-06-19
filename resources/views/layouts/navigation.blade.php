@@ -57,14 +57,55 @@
 
         </a>
 
-        <a href="{{route('orderstatus.index')}}"
+        
+        <a href="{{route('orders.pending')}}"
             class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-white/10 transition">
 
-            <i class="fa-solid fa-box-open text-green-300"></i>
+          <i class="fa-solid fa-clock"></i>
 
-            <span>Order status</span>
+            <span>pending order</span>
 
         </a>
+
+
+
+        <a href="{{route('orders.confirmed')}}"
+            class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-white/10 transition">
+
+           <i class="fas fa-circle-check text-blue-500"></i>
+
+            <span>conformed order</span>
+
+        </a>
+
+         <a href="{{route('orders.process')}}"
+            class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-white/10 transition">
+
+         <i class="fas fa-gears text-orange-500"></i>
+
+            <span>processing order</span>
+
+        </a>
+
+         <a href="{{route('orders.shipped')}}"
+            class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-white/10 transition">
+
+            <i class="fas fa-truck-fast text-yellow-500"></i>
+
+            <span>shipped order</span>
+
+        </a>
+
+         <a href="{{route('orders.delivered')}}"
+            class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-white/10 transition">
+
+            <i class="fas fa-box-open text-green-500"></i>
+
+            <span>delivered order</span>
+
+        </a>
+
+       
 
     </div>
 
@@ -127,65 +168,19 @@
              <i class="fa-solid fa-tags"></i> Categories
             </a>
 
-<div x-data="{ open: false }" class="relative">
-
-    <!-- MAIN BUTTON -->
-    <button @click="open = !open"
-        class="w-full flex items-center justify-between gap-3 px-5 py-3 rounded-xl hover:bg-white/10 hover:translate-x-1 transition-all duration-300">
-
-        <div class="flex items-center gap-3">
-            <i class="fa-solid fa-shield-halved"></i>
-            <span>User Management</span>
-        </div>
-
-        <i class="fa-solid fa-chevron-down text-xs"
-           :class="{ 'rotate-180': open }"
-           class="transition-transform duration-300"></i>
-    </button>
-
-    <!-- DROPDOWN -->
-    <div x-show="open"
-         x-transition
-         class="mt-2 ml-8 space-y-2">
-
-          <a href="{{route('users.index')}}"
-           class="flex items-center gap-2 text-sm px-4 py-2 rounded-lg hover:bg-white/10 transition">
-            <i class="fa-solid fa-users text-xs"></i>
-            Users
-        </a>
-
-        <!-- Roles -->
-        <a href="{{ route('roles.show') }}"
-           class="flex items-center gap-2 text-sm px-4 py-2 rounded-lg hover:bg-white/10 transition">
-            <i class="fa-solid fa-user-shield text-xs"></i>
-            Roles
-        </a>
-
-        <!-- Permissions -->
-        <a href="{{route('permissions.create')}}"
-           class="flex items-center gap-2 text-sm px-4 py-2 rounded-lg hover:bg-white/10 transition">
-            <i class="fa-solid fa-lock text-xs"></i>
-            Permissions
-        </a>
-
-        <!-- Optional: Assign -->
-       
-    </div>
-</div>
-
-            <a href="{{ route('brands.index') }}"
+            
+            
+            <a href="{{route('sliders.index')}}"
                 class="flex items-center gap-3 px-5 py-3 rounded-xl hover:bg-white/10 hover:translate-x-1 transition-all duration-300">
-            <i class="fa-solid fa-star"></i> Brands
+        <i class="fa-solid fa-sliders"></i> Sliders
             </a>
 
-            <a href="#"
+            <a href="{{route('blogs.index')}}"
                 class="flex items-center gap-3 px-5 py-3 rounded-xl hover:bg-white/10 hover:translate-x-1 transition-all duration-300">
-             <i class="fa-solid fa-envelope"></i> Messages
+           <i class="fa-solid fa-rectangle-ad"></i> Advertisement banner
             </a>
 
-            <div class="relative group">
-
-    <!-- Main Blog Link -->
+             <!-- Main Blog Link -->
     <div x-data="{ open: false }" class="relative">
 
     <!-- MAIN BUTTON -->
@@ -232,18 +227,72 @@
 
 </div>
 
-            
-            <a href="{{route('sliders.index')}}"
+
+
+            <a href="{{ route('brands.index') }}"
                 class="flex items-center gap-3 px-5 py-3 rounded-xl hover:bg-white/10 hover:translate-x-1 transition-all duration-300">
-        <i class="fa-solid fa-sliders"></i> Sliders
+            <i class="fa-solid fa-star"></i> Brands
             </a>
 
 
-            
-            <a href="{{route('blogs.index')}}"
+<div x-data="{ open: false }" class="relative">
+
+    <!-- MAIN BUTTON -->
+    <button @click="open = !open"
+        class="w-full flex items-center justify-between gap-3 px-5 py-3 rounded-xl hover:bg-white/10 hover:translate-x-1 transition-all duration-300">
+
+        <div class="flex items-center gap-3">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>User Management</span>
+        </div>
+
+        <i class="fa-solid fa-chevron-down text-xs"
+           :class="{ 'rotate-180': open }"
+           class="transition-transform duration-300"></i>
+    </button>
+
+    <!-- DROPDOWN -->
+    <div x-show="open"
+         x-transition
+         class="mt-2 ml-8 space-y-2">
+
+          <a href="{{route('users.index')}}"
+           class="flex items-center gap-2 text-sm px-4 py-2 rounded-lg hover:bg-white/10 transition">
+            <i class="fa-solid fa-users text-xs"></i>
+            Users
+        </a>
+
+        <!-- Roles -->
+        <a href="{{ route('roles.show') }}"
+           class="flex items-center gap-2 text-sm px-4 py-2 rounded-lg hover:bg-white/10 transition">
+            <i class="fa-solid fa-user-shield text-xs"></i>
+            Roles
+        </a>
+
+        <!-- Permissions -->
+        <a href="{{route('permissions.create')}}"
+           class="flex items-center gap-2 text-sm px-4 py-2 rounded-lg hover:bg-white/10 transition">
+            <i class="fa-solid fa-lock text-xs"></i>
+            Permissions
+        </a>
+
+        <!-- Optional: Assign -->
+       
+    </div>
+</div>
+
+
+            <a href="#"
                 class="flex items-center gap-3 px-5 py-3 rounded-xl hover:bg-white/10 hover:translate-x-1 transition-all duration-300">
-           <i class="fa-solid fa-rectangle-ad"></i> Advertisement banner
+             <i class="fa-solid fa-envelope"></i> Messages
             </a>
+
+            <div class="relative group">
+
+   
+
+            
+            
 
 
             
@@ -263,7 +312,6 @@
 
     <!-- Main Content -->
     <div class="flex-1 relative">
-
         <!-- Background Glow -->
         <div class="fixed bottom-0 right-0 w-96 h-96 bg-violet-300/20 blur-3xl rounded-full pointer-events-none"></div>
         <div class="fixed top-0 left-1/2 w-96 h-96 bg-blue-300/20 blur-3xl rounded-full pointer-events-none"></div>

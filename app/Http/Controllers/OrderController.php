@@ -6,7 +6,9 @@ use App\Models\Carts;
 use App\Models\Order;
 use App\Models\OrderItems;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
+use App\Mail\orderplacemail;
 
 class OrderController extends Controller
 {
@@ -71,6 +73,13 @@ class OrderController extends Controller
     $order->update([
         'discount_amount' => $totalDiscount,
     ]);
+    // return auth()->user()->email;
+    Mail::to(auth()->user()->email)->send(new orderplacemail($order));
+    // Mail::raw('Hello! Your Laravel mail is working.', function ($message) {
+    //     $message->to('bashantkunwar888@gmail.com')
+    //             ->subject('Laravel Test Mail');
+    // });
+
 
     // Clear cart
    Carts::where('user_id', auth()->id())->delete();
@@ -92,15 +101,37 @@ public function show($id){
     $orderitems=OrderItems::where('order_id',$order->id)->get();
     return view('order.show',compact('order','orderitems'));
 }
-public function confirm(Order $order)
+public function pending(Order $order)
 {
-    if ($order->status == 'pending') {
-        $order->update([
-            'status' => 'confirmed'
-        ]);
-    }
+    $orders=Order::where('status','pending')->latest()->paginate(5);
 
-    return redirect()->back()->with('success', 'Order confirmed successfully.');
+    return view('order.confirm', compact('orders'));
+}
+public function confirmed(Order $order)
+{
+    $orders=Order::where('status','confirmed')->latest()->paginate(5);
+
+    return view('order.confirm', compact('orders'));
+}
+public function process(Order $order)
+{
+    $orders=Order::where('status','processing')->latest()->paginate(5);
+
+    return view('order.process', compact('orders'));
+
+}
+    public function shipped()
+{
+    $orders=Order::where('status','shipped')->latest()->paginate(5);
+
+    return view('order.shipped', compact('orders'));
+}
+
+    public function delivered()
+{
+    $orders=Order::where('status','delivered')->latest()->paginate(5);
+
+    return view('order.delivered', compact('orders'));
 }
 
 public function changeStatus(Order $order)
@@ -131,4 +162,10 @@ public function changeStatus(Order $order)
 
     return back()->with('success','Order status updated successfully.');
 }
+
+public function delete(Order $order){
+    $order->delete();
+    return back()->with('success','Order deleted successfully.');
+}
+
 }

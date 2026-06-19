@@ -153,13 +153,18 @@ Route::get('cartitems/checkout', [CartItemsController::class, 'checkout'])->name
 Route::get('order/index', [OrderController::class, 'index'])->name('orders.index');
 Route::get('order/show/{id}',[OrderController::class,'show'])->name('orders.show');
 Route::post('orders/store/{carts}', [OrderController::class, 'store'])->name('orders.store');
-Route::delete('orders/delete/{id}', [OrderController::class, 'delete'])->name('orders.destroy');
+Route::delete('orders/delete/{order}', [OrderController::class, 'delete'])->name('orders.destroy');
 Route::post('orders/update/{id}', [OrderController::class, 'update'])->name('orders.update');
 Route::get('orders/checkout', [OrderController::class, 'checkout'])->name('orders.checkout');
 Route::patch('/order/{order}/confirm', [OrderController::class, 'confirm'])
     ->name('orders.confirm');
     Route::patch('/order/{order}/status', [OrderController::class,'changeStatus'])
     ->name('orders.status');
+Route::get('/order/pending', [OrderController::class, 'pending'])->name('orders.pending');
+ Route::get('/order/confirm', [OrderController::class, 'confirmed'])->name('orders.confirmed');
+ Route::get('/order/process', [OrderController::class, 'process'])->name('orders.process');
+ Route::get('/order/shipped', [OrderController::class, 'shipped'])->name('orders.shipped');
+ Route::get('/order/delivered', [OrderController::class, 'delivered'])->name('orders.delivered');   
 
 // order item route
 Route::get('orderstatus/index',[OrderItemsController::class,'index'])->name('orderstatus.index');

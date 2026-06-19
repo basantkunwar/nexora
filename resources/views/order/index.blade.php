@@ -205,13 +205,14 @@
                                     <i class="fa fa-eye"></i>
 
                                 </a>
-
-                                <a href=""
-                                    class="bg-green-500 hover:bg-green-600 text-white w-10 h-10 rounded-lg flex items-center justify-center">
-
-                                    <i class="fa fa-trash"></i>
-
-                                </a>
+<form action="{{ route('orders.destroy', $order) }}" method="post"  onsubmit="return confirm('Are you sure you want to delete this order?')">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="bg-red-500 hover:bg-red-600 text-white w-10 h-10 rounded-lg flex items-center justify-center">
+        <i class="fa fa-trash"></i>
+    </button>
+</form>
+                             
 
                             </div>
 

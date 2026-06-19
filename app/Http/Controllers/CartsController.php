@@ -31,7 +31,7 @@ class CartsController extends Controller
     );
 
     // Check if product already exists
-    $cartItem = CartItems::where('cart_id', $cart->id)
+    $cartItem = cartItems::where('cart_id', $cart->id)
         ->where('product_id', $product->id)
         ->first();
 
@@ -39,7 +39,6 @@ class CartsController extends Controller
 
         $cartItem->quantity += $request->quantity;
 
-        $cartItem->discount = $discount;
 
         $cartItem->subtotal = $cartItem->quantity * $finalPrice;
 
@@ -47,20 +46,19 @@ class CartsController extends Controller
 
     } else {
 
-        CartItems::create([
+        cartItems::create([
             'cart_id' => $cart->id,
             'product_id' => $product->id,
             'quantity' => $request->quantity,
-            'discount' => $discount,
             'subtotal' => $request->quantity * $finalPrice,
         ]);
     }
 
     // Recalculate totals
-    $cart->total_items = CartItems::where('cart_id', $cart->id)
+    $cart->total_items = cartItems::where('cart_id', $cart->id)
         ->sum('quantity');
 
-    $cart->subtotal = CartItems::where('cart_id', $cart->id)
+    $cart->subtotal = cartItems::where('cart_id', $cart->id)
         ->sum('subtotal');
 
     // Fixed shipping charge
@@ -79,7 +77,7 @@ class CartsController extends Controller
 
     if (!$carts) {
         return redirect()
-            ->route('home')
+            ->route('products.search')
             ->with('error', 'Your cart is empty. Please add products first.');
     }
 
@@ -87,8 +85,8 @@ class CartsController extends Controller
 
     if ($cartitems->isEmpty()) {
         return redirect()
-            ->route('frontend.products')
-            ->with('error', 'Your cart is empty. Please add products first.');
+            ->route('carts.index')
+            ->with('Your cart is empty. Please add products first.');
     }
 
     return view('cart.index', compact('carts', 'cartitems'));

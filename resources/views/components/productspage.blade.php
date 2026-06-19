@@ -2,80 +2,158 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-        <!-- FILTER SIDEBAR -->
-       <aside class="lg:col-span-3">
+        <!-- ===========================
+             FILTER SIDEBAR
+        ============================ -->
+        <aside class="lg:col-span-3">
 
-    <div class="sticky top-24 self-start
-                bg-white rounded-xl border
-                shadow-sm p-4">
+            <div class="sticky top-24 bg-white rounded-2xl shadow-lg border p-6">
 
-        <h2 class="font-bold text-lg mb-4">
-            Filters
-        </h2>
+                <!-- Filter Header -->
+                <div class="flex items-center justify-between mb-5">
 
-        <!-- Categories -->
-        <div class="mb-5">
-            <h3 class="font-medium text-sm mb-2">
-                Categories
-            </h3>
+                    <h2 class="text-xl font-bold">
+                        Filters
+                    </h2>
 
-            <div class="h-24 overflow-y-auto border rounded-lg p-2 space-y-1">
+                    <a href="{{ redirect()->getUrlGenerator()->current() }}"
+                        class="text-sm text-red-500 hover:text-red-600">
+                        Clear
+                    </a>
 
-                @foreach($categories as $category)
-                    <label class="flex items-center gap-2 text-sm">
-                        <input type="checkbox"
-                               name="categories[]"
-                               value="{{ $category->id }}">
-                        {{ $category->name }}
-                    </label>
-                @endforeach
+                </div>
+
+                <!-- ===========================
+                     FILTER FORM
+                ============================ -->
+                <form action="{{ route('products.search') }}"
+                    method="GET"
+                    class="space-y-6">
+
+                    <!-- ===========================
+                         CATEGORY FILTER
+                    ============================ -->
+                    <div>
+
+                        <h3 class="font-semibold mb-3 text-gray-700">
+                            Categories
+                        </h3>
+
+                        <div class="max-h-52 overflow-y-auto border rounded-xl p-3 space-y-2">
+
+                            @foreach ($categories as $category)
+
+                                <label class="flex items-center gap-2 cursor-pointer">
+
+                                    <input
+                                        type="checkbox"
+                                        name="categories[]"
+                                        value="{{ $category->id }}"
+                                        class="rounded text-green-600"
+
+                                        {{ in_array($category->id, request()->categories ?? []) ? 'checked' : '' }}>
+
+                                    <span class="text-sm text-gray-700">
+                                        {{ $category->name }}
+                                    </span>
+
+                                </label>
+
+                            @endforeach
+
+                        </div>
+
+                    </div>
+
+                    <!-- ===========================
+                         BRAND FILTER
+                    ============================ -->
+                    <div>
+
+                        <h3 class="font-semibold mb-3 text-gray-700">
+                            Brands
+                        </h3>
+
+                        <div class="max-h-52 overflow-y-auto border rounded-xl p-3 space-y-2">
+
+                            @foreach ($brands as $brand)
+
+                                <label class="flex items-center gap-2 cursor-pointer">
+
+                                    <input
+                                        type="checkbox"
+                                        name="brands[]"
+                                        value="{{ $brand->id }}"
+                                        class="rounded text-green-600"
+
+                                        {{ in_array($brand->id, request()->brands ?? []) ? 'checked' : '' }}>
+
+                                    <span class="text-sm text-gray-700">
+                                        {{ $brand->name }}
+                                    </span>
+
+                                </label>
+
+                            @endforeach
+
+                        </div>
+
+                    </div>
+
+                    <!-- ===========================
+                         PRICE FILTER
+                    ============================ -->
+                    <div>
+
+                        <h3 class="font-semibold mb-3 text-gray-700">
+                            Price Range
+                        </h3>
+
+                        <div class="space-y-3">
+
+                            <input
+                                type="number"
+                                name="min_price"
+                                placeholder="Minimum Price"
+                                value="{{ request('min_price') }}"
+                                class="w-full border rounded-xl p-3 focus:ring-2 focus:ring-green-500 focus:outline-none">
+
+                            <input
+                                type="number"
+                                name="max_price"
+                                placeholder="Maximum Price"
+                                value="{{ request('max_price') }}"
+                                class="w-full border rounded-xl p-3 focus:ring-2 focus:ring-green-500 focus:outline-none">
+
+                        </div>
+
+                    </div>
+
+                    <!-- ===========================
+                         APPLY FILTER BUTTON
+                    ============================ -->
+                    <button
+                        type="submit"
+                        class="w-full bg-black text-white py-3 rounded-xl hover:bg-gray-800 transition">
+
+                        Apply Filters
+
+                    </button>
+
+                </form>
 
             </div>
-        </div>
 
-        <!-- Brands -->
-        <div class="mb-5">
-            <h3 class="font-medium text-sm mb-2">
-                Brands
-            </h3>
+        </aside>
 
-            <div class="h-24 overflow-y-auto border rounded-lg p-2 space-y-1">
-
-                @foreach($brands as $brand)
-                    <label class="flex items-center gap-2 text-sm">
-                        <input type="checkbox"
-                               name="brands[]"
-                               value="{{ $brand->id }}">
-                        {{ $brand->name }}
-                    </label>
-                @endforeach
-
-            </div>
-        </div>
-
-        <!-- Price -->
-        <div class="space-y-2">
-            <input type="number"
-                   placeholder="Min Price"
-                   class="w-full rounded-lg border p-2 text-sm">
-
-            <input type="number"
-                   placeholder="Max Price"
-                   class="w-full rounded-lg border p-2 text-sm">
-        </div>
-
-        <button class="w-full mt-4 bg-black text-white py-2 rounded-lg">
-            Apply Filter
-        </button>
-
-    </div>
-
-</aside>
-
-        <!-- PRODUCTS -->
+        <!-- ===========================
+             PRODUCTS SECTION
+        ============================ -->
         <section class="lg:col-span-9">
 
+            <!-- Header -->
             <div class="flex items-center justify-between mb-6">
+
                 <h2 class="text-2xl font-bold">
                     Products
                 </h2>
@@ -83,15 +161,38 @@
                 <span class="text-gray-500">
                     {{ $products->count() }} Products
                 </span>
+
             </div>
 
+            <!-- Products Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
 
-                @foreach($products as $product)
+                @forelse ($products as $product)
+
                     <x-cart :product="$product" />
-                @endforeach
+
+                @empty
+
+                    <div class="col-span-full text-center py-16">
+
+                        <h3 class="text-xl font-semibold text-gray-600">
+                            No Products Found
+                        </h3>
+
+                        <p class="text-gray-500 mt-2">
+                            Try changing your filters.
+                        </p>
+
+                    </div>
+
+                @endforelse
 
             </div>
+
+            {{-- <!-- Pagination -->
+            <div class="mt-8">
+                {{ $products->withQueryString()->links() }}
+            </div> --}}
 
         </section>
 

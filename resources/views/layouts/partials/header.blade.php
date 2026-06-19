@@ -175,17 +175,7 @@ href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
                     </a>
                 </li>
 
-                <li>
-                    <a href="{{route('pages.contact')}}" class="hover:text-gray-200 transition">
-                        Contact Us
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/emi" class="hover:text-gray-200 transition">
-                        EMI
-                    </a>
-                </li>
+                
 
                 <li>
                     <a href="{{route('frontend.blogs.blogs')}}" class="hover:text-gray-200 transition">
@@ -198,6 +188,18 @@ href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
                         Book a Repair
                     </a>
                 </li>
+                <li>
+                    <a href="/emi" class="hover:text-gray-200 transition">
+                        EMI
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="{{route('pages.contact')}}" class="hover:text-gray-200 transition">
+                        Contact Us
+                    </a>
+                </li>
+
 
             </ul>
 
