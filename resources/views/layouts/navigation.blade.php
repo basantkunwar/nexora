@@ -175,7 +175,7 @@
         <i class="fa-solid fa-sliders"></i> Sliders
             </a>
 
-            <a href="{{route('blogs.index')}}"
+            <a href="{{route('advertisement.index')}}"
                 class="flex items-center gap-3 px-5 py-3 rounded-xl hover:bg-white/10 hover:translate-x-1 transition-all duration-300">
            <i class="fa-solid fa-rectangle-ad"></i> Advertisement banner
             </a>

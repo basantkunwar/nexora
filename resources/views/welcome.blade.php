@@ -1,84 +1,6 @@
 @extends('layouts.frontend')
 
 @section('content')
-{{-- <section
-    x-data="{
-        active: 0,
-        slides: [
-            '{{ asset('storage/' . settings('home_banner1')) }}',
-            '{{ asset('storage/' . settings('home_banner2')) }}',
-            '{{ asset('storage/' . settings('home_banner3')) }}'
-        ],
-        init() {
-            setInterval(() => {
-                this.active = (this.active + 1) % this.slides.length;
-            }, 4000);
-        }
-    }"
-   class="relative w-full h-screen overflow-hidden -mt-[170px]">
->
-
-    <!-- Slides -->
-    <template x-for="(slide, index) in slides" :key="index">
-        <img
-            :src="slide"
-            x-show="active === index"
-            x-transition:enter="transition-opacity duration-1000"
-            x-transition:enter-start="opacity-0"
-            x-transition:enter-end="opacity-100"
-            x-transition:leave="transition-opacity duration-1000"
-            x-transition:leave-start="opacity-100"
-            x-transition:leave-end="opacity-0"
-            class="absolute inset-0 w-full h-full object-cover"
-            alt="Banner"
-        >
-    </template>
-
-    <!-- Overlay -->
-    <div class="absolute inset-0 bg-black/40"></div>
-
-    <!-- Content -->
-    <div class="absolute inset-0 flex items-center justify-center z-10">
-        <div class="text-center text-white">
-            <h1 class="text-5xl font-bold">
-            {{ settings('project') }}
-            </h1>
-            <p class="mt-4 text-xl">
-            {{ settings('description') }}
-            </p>
-        </div>
-    </div>
-
-    <!-- Previous Button -->
-    <button
-        @click="active = active === 0 ? slides.length - 1 : active - 1"
-        class="absolute left-5 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 text-white w-12 h-12 rounded-full"
-    >
-        ❮
-    </button>
-
-    <!-- Next Button -->
-    <button
-        @click="active = (active + 1) % slides.length"
-        class="absolute right-5 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 text-white w-12 h-12 rounded-full"
-    >
-        ❯
-    </button>
-
-    <!-- Dots -->
-    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-20">
-        <template x-for="(slide, index) in slides" :key="index">
-            <button
-                @click="active = index"
-                :class="active === index ? 'bg-white' : 'bg-white/40'"
-                class="w-3 h-3 rounded-full"
-            ></button>
-        </template>
-    </div>
-
-</section> --}}
-
-
 {{-- slider test --}}
 <section
     x-data="{
@@ -247,6 +169,36 @@
     </div>
 </section>
 
+{{-- top advertise banner --}}
+@if($topBanner->isNotEmpty())
+
+<section class="w-full  py-24 bg-white">
+
+        @foreach($topBanner as $banner)
+
+            <a href="{{ $banner->url }}" class="block group">
+
+                <div class="relative w-full overflow-hidden rounded-sm shadow-lg">
+
+                    <img
+                        src="{{ asset('storage/'.$banner->image) }}"
+                        alt="Advertisement Banner"
+                        class="w-full h-[380px] md:h-[450px] lg:h-[520px] object-cover
+                               transition duration-500 group-hover:scale-105">
+
+                    <!-- subtle overlay -->
+                    <div class="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition"></div>
+
+                </div>
+
+            </a>
+
+        @endforeach
+
+</section>
+
+@endif
+
 <br>
 {{-- all productcts --}}
 <section class="py-6 bg-white">
@@ -268,6 +220,38 @@
     </div>
 </section>
 
+
+{{-- topbellow advertise banner --}}
+@if($belowTopBanner->isNotEmpty())
+
+<section class="w-full my-10 py-24 bg-white">
+
+ 
+
+        @foreach($belowTopBanner as $banner)
+
+            <a href="{{ $banner->url }}" class="block group">
+
+                <div class="relative w-full overflow-hidden rounded-sm shadow-lg">
+
+                    <img
+                        src="{{ asset('storage/'.$banner->image) }}"
+                        alt="Advertisement Banner"
+                        class="w-full h-[380px] md:h-[450px] lg:h-[520px] object-cover
+                               transition duration-500 group-hover:scale-105">
+
+                    <!-- subtle overlay -->
+                    <div class="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition"></div>
+
+                </div>
+
+            </a>
+
+        @endforeach
+
+    
+</section>
+@endif
 
 
 {{-- brands--}}
@@ -291,6 +275,39 @@
 </section>
 
 
+{{--middele advertise banner --}}
+@if($middleBanner->isNotEmpty())
+
+<section class="w-full my-10 py-24 bg-white">
+
+    {{-- <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> --}}
+
+        @foreach($topBanner as $banner)
+
+            <a href="{{ $banner->url }}" class="block group">
+
+                <div class="relative w-full overflow-hidden rounded-sm shadow-lg">
+
+                    <img
+                        src="{{ asset('storage/'.$banner->image) }}"
+                        alt="Advertisement Banner"
+                        class="w-full h-[380px] md:h-[450px] lg:h-[520px] object-cover
+                               transition duration-500 group-hover:scale-105">
+
+                    <!-- subtle overlay -->
+                    <div class="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition"></div>
+
+                </div>
+
+            </a>
+
+        @endforeach
+
+    {{-- </div> --}}
+
+</section>
+
+@endif
 
 
 {{-- letest products --}}
@@ -314,6 +331,39 @@
 </section>
 
 
+{{-- bellow middle advertise banner --}}
+@if($belowMiddleBanner->isNotEmpty())
+
+<section class="w-full my-10 py-24 bg-white">
+
+    {{-- <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> --}}
+
+        @foreach($belowMiddleBanner as $banner)
+
+            <a href="{{ $banner->url }}" class="block group">
+
+                <div class="relative w-full overflow-hidden rounded-sm shadow-lg">
+
+                    <img
+                        src="{{ asset('storage/'.$banner->image) }}"
+                        alt="Advertisement Banner"
+                        class="w-full h-[380px] md:h-[450px] lg:h-[520px] object-cover
+                               transition duration-500 group-hover:scale-105">
+
+                    <!-- subtle overlay -->
+                    <div class="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition"></div>
+
+                </div>
+
+            </a>
+
+        @endforeach
+
+    {{-- </div> --}}
+
+</section>
+@endif
+
 
 {{-- vlogs are  --}}
 <section class="py-6 bg-white">
@@ -336,21 +386,38 @@
 </section>
 
 
+{{-- buttom advertise banner --}}
+@if($bottomBanner->isNotEmpty())
 
+<section class="w-full my-10 py-24 bg-white">
 
+    {{-- <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> --}}
 
+        @foreach($bottomBanner as $banner)
 
+            <a href="{{ $banner->url }}" class="block group">
 
+                <div class="relative w-full overflow-hidden rounded-sm shadow-lg">
 
+                    <img
+                        src="{{ asset('storage/'.$banner->image) }}"
+                        alt="Advertisement Banner"
+                        class="w-full h-[380px] md:h-[450px] lg:h-[520px] object-cover
+                               transition duration-500 group-hover:scale-105">
 
+                    <!-- subtle overlay -->
+                    <div class="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition"></div>
 
+                </div>
 
+            </a>
 
+        @endforeach
 
+    {{-- </div> --}}
 
-
-
-
+</section>
+@endif
 
 
 
@@ -426,4 +493,6 @@
 
     </div>
 </section>
+
+
 @endsection

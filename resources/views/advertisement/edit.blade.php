@@ -3,8 +3,9 @@
 
     <!-- ================= Banner Card ================= -->
     <div class="bg-white border border-gray-200 rounded-3xl shadow-sm overflow-hidden">
-<form action="{{route('advertisement.store')}}" method="POST" enctype="multipart/form-data">
-    @csrf
+<form action="{{ route('advertisement.update', $ad->id) }}" method="POST" enctype="multipart/form-data">
+                       @csrf
+@method('PUT')
         <!-- Card Header -->
         <div class="px-8 py-6 border-b bg-gradient-to-r from-blue-50 to-indigo-50">
             <div class="flex items-center gap-4">
@@ -54,7 +55,7 @@
 
                         <img
                             id="previewImage"
-                            src="https://placehold.co/1000x500/e5e7eb/6b7280?text=Banner+Preview"
+                            src="{{ asset('storage/'.$ad->image) }}"
                             class="w-full h-full object-cover">
 
                     </div>
@@ -157,13 +158,14 @@
 
                 <select
                     name="link_type"
+                    value="{{ $ad->link_type }}"
                     id="link_type"
                     class="w-full rounded-xl border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
 
                     <option value="none">No Link</option>
-                    <option value="product">Product</option>
-                    <option value="category">Category</option>
-                    <option value="brand">Brand</option>
+                    <option value="product" {{ $ad->link_type=='product' ? 'selected' : ''}}>Product</option>
+                    <option value="category" {{ $ad->link_type=='category' ? 'selected' : ''}}>Category</option>
+                    <option value="brand" {{ $ad->link_type=='brand' ? 'selected' : ''}}>Brand</option>
 
                 </select>
 
@@ -208,23 +210,23 @@
                     name="position"
                     class="w-full rounded-xl border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
 
-                    <option value="top_banner">
+                    <option value="top_banner"{{ $ad->position=='top_banner' ? 'selected' : ''}} >
                         Top Banner
                     </option>
 
-                    <option value="bellowtop_banner">
+                    <option value="bellowtop_banner" {{ $ad->position=='bellowtop_banner' ? 'selected' : ''}}>
                         Below Top Banner
                     </option>
 
-                    <option value="middle_banner">
+                    <option value="middle_banner" {{ $ad->position=='middle_banner' ? 'selected' : ''}}>
                         Middle Banner
                     </option>
 
-                    <option value="bellowmiddle_banner">
+                    <option value="bellowmiddle_banner" {{ $ad->position=='bellowmiddle_banner' ? 'selected' : ''}}>
                         Below Middle Banner
                     </option>
 
-                    <option value="bottom_banner">
+                    <option value="bottom_banner" {{ $ad->position=='bottom_banner' ? 'selected' : ''}}>
                         Bottom Banner
                     </option>
 
@@ -243,6 +245,7 @@
 
                     <input
                         type="number"
+                        value="{{ $ad->sort_order }}"
                         name="sort_order"
                         value="1"
                         min="1"
@@ -289,11 +292,11 @@
                            focus:ring-2 focus:ring-blue-500
                            focus:border-blue-500 py-3">
 
-                    <option value="1">
+                    <option value="1" {{ $ad->status=='1' ? 'selected' : ''}}>
                         🟢 Active
                     </option>
 
-                    <option value="0">
+                    <option value="0" {{ $ad->status=='0' ? 'selected' : ''}}>
                         🔴 Inactive
                     </option>
 
@@ -355,7 +358,7 @@
 
                 </svg>
 
-                Save Advertisement
+                update Advertisement
 
             </button>
 

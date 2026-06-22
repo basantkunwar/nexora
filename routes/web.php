@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\BlogcategoryController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BlogtagsController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\CartsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\dashboard;
+use App\Http\Controllers\Homecontroller;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemsController;
 use App\Http\Controllers\PermissionController;
@@ -22,13 +24,7 @@ use App\Http\Controllers\usercontroller;
 use App\Models\Slider;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    $sliders = Slider::where('status', 1)
-    ->orderBy('position')
-    ->get();
-
-return view('welcome', compact('sliders'));
-})->name('home');
+Route::get('/',[Homecontroller::class,'index'])->name('home');
 
 Route::get('/dashboard', [dashboard::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -168,6 +164,19 @@ Route::get('/order/pending', [OrderController::class, 'pending'])->name('orders.
 
 // order item route
 Route::get('orderstatus/index',[OrderItemsController::class,'index'])->name('orderstatus.index');
+
+// advertise routes
+Route::get('advertisement/index', [AdvertisementController::class, 'index'])->name('advertisement.index');
+Route::get('advertisement/create', [AdvertisementController::class, 'create'])->name('advertisement.create');
+Route::post('advertisement/store', [AdvertisementController::class, 'store'])->name('advertisement.store');
+Route::get('advertisement/edit/{id}', [AdvertisementController::class, 'edit'])->name('advertisement.edit');
+Route::put('advertisement/update/{id}', [AdvertisementController::class, 'update'])->name('advertisement.update');
+Route::delete('advertisement/delete/{id}', [AdvertisementController::class, 'delete'])->name('advertisement.destroy');
+Route::get('/advertisement/items/{type}', [AdvertisementController::class,'getItems'])
+        ->name('advertisement.items');
+//get products category brand route
+// Route::get('/get-Products', [AdvertisementController::class,'getProducts'])->name('getProducts');
+
 // frontend routes
 
 
@@ -180,8 +189,8 @@ Route::get('frontend/blogs/blog', [BlogController::class, 'blog'])->name('fronte
 Route::get('frontend/blogs/blogdetails/{id}', [BlogController::class, 'blogdetails'])->name('frontend.blogs.blogdetails');
 
 // productdetails route or category and brand wise products pages route
-Route::get('frontend/brand/{id}/index/',[BrandController::class,'details'])->name('frontend.brand.index');
-Route::get('frontend/category/{id}/index',[CategoryController::class,'details'])->name('frontend.category.index');
+Route::get('frontend/brand/index/{id}',[BrandController::class,'details'])->name('frontend.brand.index');
+Route::get('frontend/category/index/{id}',[CategoryController::class,'details'])->name('frontend.category.index');
 
 // productsdetails route
 Route::get('frontend/products/productdetails/{id}',[productsController::class,'productdetails'])->name('frontend.product.productdetails');

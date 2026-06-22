@@ -1,8 +1,43 @@
 <x-app-layout>
+<style>
+@media print {
 
+    /* Hide everything */
+    body * {
+        visibility: hidden !important;
+    }
+
+    /* Show only printable area */
+    #printable, #printable * {
+        visibility: visible !important;
+    }
+
+    #printable {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+
+    /* Hide layout parts (Jetstream / app layout) */
+    header,
+    nav,
+    aside,
+    .sidebar,
+    .topbar {
+        display: none !important;
+    }
+
+    /* Hide buttons / controls */
+    #no-print,
+    #no-print * {
+        display: none !important;
+    }
+}
+</style>
 <div class="container mx-auto p-6">
 
-    <div class="bg-white shadow-lg rounded-lg">
+    <div class="bg-white shadow-lg rounded-lg" id="printable">
 
         <!-- Header -->
         <div class="border-b p-6 flex justify-between">
@@ -157,7 +192,7 @@
         </table>
 
         <!-- Order Status -->
-        <div class="mt-6 border-t pt-4">
+        <div class="mt-6 border-t pt-4" id="no-print">
 
             <div class="flex justify-between items-center">
 
@@ -195,7 +230,7 @@
             @endif
 
             <div class="flex justify-end mt-4 ">
-                <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition">print</button>
+                <button onclick="window.print()" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition">print</button>
             </div>
         </div>
 

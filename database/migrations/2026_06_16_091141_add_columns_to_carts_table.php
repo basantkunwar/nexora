@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('carts', function (Blueprint $table) {
             //
-            $table->integer('subtotal')->default(0);
+            // $table->integer('subtotal')->default(0);
           
         });
     }
