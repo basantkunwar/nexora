@@ -147,7 +147,7 @@
                 </table>
 
             </div>
-
+{{ $brands->links() }}
         </div>
 
     </div>

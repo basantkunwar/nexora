@@ -7,6 +7,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Products;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdvertisementController extends Controller
 {
@@ -90,6 +91,15 @@ $ad->update([
     'status'=>$request->status ?? 1
 ]);
 return redirect()->route('advertisement.index')->with('success','Slider Updated');
+    }
+
+    public function delete($id){
+        $ad=Advertisement::find($id);
+        if($ad->image){
+            Storage::disk('public')->delete($ad->image);
+        }
+        $ad->delete();
+        return redirect()->route('advertisement.index')->with('success','Slider Deleted');
     }
 }
 

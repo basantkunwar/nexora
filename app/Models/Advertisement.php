@@ -13,7 +13,7 @@ class Advertisement extends Model
     switch ($this->link_type) {
 
         case 'product':
-            return route('products.search', $this->link_id);
+            return route('frontend.product.productdetails', $this->link_id);
 
         case 'category':
             return route('frontend.category.index', $this->link_id);

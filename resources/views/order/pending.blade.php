@@ -81,7 +81,7 @@
                                 onclick="return confirm('Change order status?')"
                                 class="{{ $colors[$order->status] ?? 'bg-gray-500' }} text-white px-4 py-2 rounded-lg capitalize">
 
-                                {{ $order->status }}
+                                change status
 
                             </button>
 

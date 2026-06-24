@@ -66,7 +66,7 @@
             </div>
 
             <!-- FORM PUSHED TO BOTTOM -->
-            <form action="{{ route('carts.store') }}" method="POST" class="mt-auto mt-4">
+            <form action="{{ route('carts.store') }}" method="POST" onsubmit="return confirm('Are you sure to add this product to your cart?')"  class="mt-auto mt-4">
                 @csrf
 
                 <input type="hidden" name="product_id" value="{{ $product->id }}">
@@ -76,7 +76,7 @@
                     <button type="button" onclick="decreaseQty(this)">−</button>
                
 
-                    <input type="number"
+                    <input type="number" 
                            name="quantity"
                            value="1"
                            min="1"
@@ -89,7 +89,7 @@
                 <!-- BUTTONS -->
                 <div class="mt-3 flex gap-2">
 
-                    <button type="submit"
+                    <button type="submit" 
                         class="flex-1 bg-blue-600 text-white py-2 rounded-xl hover:bg-gray-800 transition">
                         Add to Cart
                     </button>

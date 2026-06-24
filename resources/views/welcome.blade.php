@@ -172,22 +172,24 @@
 {{-- top advertise banner --}}
 @if($topBanner->isNotEmpty())
 
-<section class="w-full  py-24 bg-white">
+<section class="py-8 bg-white">
+    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
 
         @foreach($topBanner as $banner)
 
             <a href="{{ $banner->url }}" class="block group">
 
-                <div class="relative w-full overflow-hidden rounded-sm shadow-lg">
+                <div class="relative overflow-hidden rounded shadow-lg">
 
                     <img
                         src="{{ asset('storage/'.$banner->image) }}"
                         alt="Advertisement Banner"
-                        class="w-full h-[380px] md:h-[450px] lg:h-[520px] object-cover
-                               transition duration-500 group-hover:scale-105">
+                        class="w-full h-[260px] md:h-[340px] lg:h-[420px]
+                               object-cover transition-all duration-500 ease-out
+                hover:scale-105">
 
-                    <!-- subtle overlay -->
-                    <div class="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition"></div>
+                    <!-- Overlay -->
+                    <div class="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition duration-300"></div>
 
                 </div>
 
@@ -195,11 +197,12 @@
 
         @endforeach
 
+    </div>
 </section>
 
 @endif
-
 <br>
+
 {{-- all productcts --}}
 <section class="py-6 bg-white">
     <div class="px-4 sm:px-6 lg:px-8">
@@ -224,24 +227,24 @@
 {{-- topbellow advertise banner --}}
 @if($belowTopBanner->isNotEmpty())
 
-<section class="w-full my-10 py-24 bg-white">
-
- 
+<section class="py-8 bg-white">
+    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
 
         @foreach($belowTopBanner as $banner)
 
             <a href="{{ $banner->url }}" class="block group">
 
-                <div class="relative w-full overflow-hidden rounded-sm shadow-lg">
+                <div class="relative overflow-hidden rounded shadow-lg">
 
                     <img
                         src="{{ asset('storage/'.$banner->image) }}"
                         alt="Advertisement Banner"
-                        class="w-full h-[380px] md:h-[450px] lg:h-[520px] object-cover
-                               transition duration-500 group-hover:scale-105">
+                        class="w-full h-[260px] md:h-[340px] lg:h-[420px]
+                               object-cover transition-all duration-500 ease-out
+                hover:scale-105">
 
-                    <!-- subtle overlay -->
-                    <div class="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition"></div>
+                    <!-- Overlay -->
+                    <div class="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition duration-300"></div>
 
                 </div>
 
@@ -249,10 +252,10 @@
 
         @endforeach
 
-    
+    </div>
 </section>
-@endif
 
+@endif
 
 {{-- brands--}}
 <section class="py-6 bg-white">
@@ -278,24 +281,24 @@
 {{--middele advertise banner --}}
 @if($middleBanner->isNotEmpty())
 
-<section class="w-full my-10 py-24 bg-white">
+<section class="py-8 bg-white">
+    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    {{-- <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> --}}
-
-        @foreach($topBanner as $banner)
+        @foreach($middleBanner as $banner)
 
             <a href="{{ $banner->url }}" class="block group">
 
-                <div class="relative w-full overflow-hidden rounded-sm shadow-lg">
+                <div class="relative overflow-hidden rounded shadow-lg">
 
                     <img
                         src="{{ asset('storage/'.$banner->image) }}"
                         alt="Advertisement Banner"
-                        class="w-full h-[380px] md:h-[450px] lg:h-[520px] object-cover
-                               transition duration-500 group-hover:scale-105">
+                        class="w-full h-[260px] md:h-[340px] lg:h-[420px]
+                               object-cover transition-all duration-500 ease-out
+                hover:scale-105">
 
-                    <!-- subtle overlay -->
-                    <div class="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition"></div>
+                    <!-- Overlay -->
+                    <div class="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition duration-300"></div>
 
                 </div>
 
@@ -303,12 +306,10 @@
 
         @endforeach
 
-    {{-- </div> --}}
-
+    </div>
 </section>
 
 @endif
-
 
 {{-- letest products --}}
 <section class="py-6 bg-white">
@@ -334,24 +335,24 @@
 {{-- bellow middle advertise banner --}}
 @if($belowMiddleBanner->isNotEmpty())
 
-<section class="w-full my-10 py-24 bg-white">
-
-    {{-- <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> --}}
+<section class="py-8 bg-white">
+    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
 
         @foreach($belowMiddleBanner as $banner)
 
             <a href="{{ $banner->url }}" class="block group">
 
-                <div class="relative w-full overflow-hidden rounded-sm shadow-lg">
+                <div class="relative overflow-hidden rounded shadow-lg">
 
                     <img
                         src="{{ asset('storage/'.$banner->image) }}"
                         alt="Advertisement Banner"
-                        class="w-full h-[380px] md:h-[450px] lg:h-[520px] object-cover
-                               transition duration-500 group-hover:scale-105">
+                        class="w-full h-[260px] md:h-[340px] lg:h-[420px]
+                               object-cover transition-all duration-500 ease-out
+                hover:scale-105">
 
-                    <!-- subtle overlay -->
-                    <div class="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition"></div>
+                    <!-- Overlay -->
+                    <div class="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition duration-300"></div>
 
                 </div>
 
@@ -359,9 +360,9 @@
 
         @endforeach
 
-    {{-- </div> --}}
-
+    </div>
 </section>
+
 @endif
 
 
@@ -389,24 +390,24 @@
 {{-- buttom advertise banner --}}
 @if($bottomBanner->isNotEmpty())
 
-<section class="w-full my-10 py-24 bg-white">
-
-    {{-- <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> --}}
+<section class="py-8 bg-white">
+    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
 
         @foreach($bottomBanner as $banner)
 
             <a href="{{ $banner->url }}" class="block group">
 
-                <div class="relative w-full overflow-hidden rounded-sm shadow-lg">
+                <div class="relative overflow-hidden rounded shadow-lg">
 
                     <img
                         src="{{ asset('storage/'.$banner->image) }}"
                         alt="Advertisement Banner"
-                        class="w-full h-[380px] md:h-[450px] lg:h-[520px] object-cover
-                               transition duration-500 group-hover:scale-105">
+                        class="w-full h-[260px] md:h-[340px] lg:h-[420px]
+                               object-cover transition-all duration-500 ease-out
+                hover:scale-105">
 
-                    <!-- subtle overlay -->
-                    <div class="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition"></div>
+                    <!-- Overlay -->
+                    <div class="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition duration-300"></div>
 
                 </div>
 
@@ -414,9 +415,9 @@
 
         @endforeach
 
-    {{-- </div> --}}
-
+    </div>
 </section>
+
 @endif
 
 

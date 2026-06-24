@@ -75,7 +75,7 @@
                                 </td>
 
                                <td class="text-center">
-    <form action="{{ route('carts.destroy', $item->id) }}" method="POST">
+    <form action="{{ route('carts.destroy', $item->id) }}" onsubmit="return confirm('Are you sure to delete this cart item?')" method="POST">
         @csrf
         @method('DELETE')
 

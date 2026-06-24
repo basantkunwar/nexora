@@ -99,10 +99,23 @@ href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
             <a href="#">
                 <i class="fa fa-bell text-3xl"></i>
             </a>
+<a href="{{ route('carts.index') }}" class="relative inline-flex items-center">
+    <i class="fa fa-shopping-cart text-3xl text-blue-600"></i>
 
-            <a href="{{route('carts.index')}}">
-                <i class="fa fa-shopping-cart text-3xl"></i>
-            </a>
+    @if($cartCount > 0)
+        <span
+            class="absolute -top-2 -right-2
+                   bg-red-600 text-white
+                   text-[10px] font-bold
+                   min-w-[20px] h-5
+                   px-1
+                   rounded-full
+                   flex items-center justify-center
+                   shadow">
+            {{ $cartCount }}
+        </span>
+    @endif
+</a>
 
             <!-- AUTH -->
             @auth
