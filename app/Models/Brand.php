@@ -11,4 +11,8 @@ class Brand extends Model
     public function products(){
         return $this->hasMany(Products::class);
     }
+
+    public function brandfeatures(){
+        return $this->hasOne(Brandfeature::class);
+    }
 }

@@ -168,6 +168,30 @@
 
     </div>
 </section>
+{{-- category featured products --}}
+<section class="py-6 bg-white">
+    <div class="px-4 sm:px-6 lg:px-8">
+
+        <h2 class="text-2xl font-bold mb-6">
+            
+        </h2>
+
+        <div class="relative">
+
+            <x-featuredproducts />
+
+            <div class="category-prev swiper-button-prev"></div>
+            <div class="category-next swiper-button-next"></div>
+
+        </div>
+
+    </div>
+</section>
+
+
+
+
+
 
 {{-- top advertise banner --}}
 @if($topBanner->isNotEmpty())
@@ -184,8 +208,8 @@
                     <img
                         src="{{ asset('storage/'.$banner->image) }}"
                         alt="Advertisement Banner"
-                        class="w-full h-[260px] md:h-[340px] lg:h-[420px]
-                               object-cover transition-all duration-500 ease-out
+                        class="w-full h-[320px] md:h-[340px] lg:h-[420px]
+                               object-fill transition-all duration-500 ease-out
                 hover:scale-105">
 
                     <!-- Overlay -->
@@ -239,8 +263,8 @@
                     <img
                         src="{{ asset('storage/'.$banner->image) }}"
                         alt="Advertisement Banner"
-                        class="w-full h-[260px] md:h-[340px] lg:h-[420px]
-                               object-cover transition-all duration-500 ease-out
+                        class="w-full h-[320px] md:h-[340px] lg:h-[420px]
+                               object-fill transition-all duration-500 ease-out
                 hover:scale-105">
 
                     <!-- Overlay -->
@@ -256,6 +280,29 @@
 </section>
 
 @endif
+
+{{-- brands featured products --}}
+<section class="py-6 bg-white">
+    <div class="px-4 sm:px-6 lg:px-8">
+
+        <h2 class="text-2xl font-bold mb-6">
+            
+        </h2>
+
+        <div class="relative">
+
+            <x-brandfeaturesection />
+
+            <div class="category-prev swiper-button-prev"></div>
+            <div class="category-next swiper-button-next"></div>
+
+        </div>
+
+    </div>
+</section>
+
+
+
 
 {{-- brands--}}
 <section class="py-6 bg-white">

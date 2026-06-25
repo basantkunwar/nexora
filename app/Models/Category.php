@@ -13,4 +13,7 @@ class Category extends Model
     public function products(){
         return $this->hasMany(Products::class);
     }
+    public function featuredSections(){
+        return $this->hasOne(FeaturedSection::class);
+    }
 }

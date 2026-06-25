@@ -68,7 +68,7 @@ if ($request->filled('max_stock')) {
     $brands = Brand::all();
     $products = Products::with(['brand', 'category']);
     $products=$this->filters($products,$request);
-    $products = $products->paginate(16);   
+    $products = $products->paginate(5);   
     return view('products.index',compact('products','categories','brands'));
        
     }

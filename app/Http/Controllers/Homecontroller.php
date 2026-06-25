@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Advertisement;
+use App\Models\FeaturedSection;
+use App\Models\Products;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 
@@ -41,6 +43,7 @@ class Homecontroller extends Controller
     ->orderBy('position')
     ->get();
 
+    
 return view('welcome', compact('sliders','topBanner','belowTopBanner','middleBanner','belowMiddleBanner','bottomBanner'));
 }
 }

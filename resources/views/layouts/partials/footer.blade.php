@@ -87,23 +87,23 @@
             <!-- SOCIAL -->
             <div class="flex gap-5 mt-10 text-3xl">
 
-                <a href="#" class="text-blue-500 hover:text-white hover:scale-110 transition duration-300">
+                <a href="{{settings('facebook')}}" class="text-blue-500 hover:text-white hover:scale-110 transition duration-300">
                     <i class="fab fa-facebook"></i>
                 </a>
 
-                <a href="#" class="text-pink-500 hover:text-white hover:scale-110 transition duration-300">
+                <a href="{{settings('instagram')}}" class="text-pink-500 hover:text-white hover:scale-110 transition duration-300">
                     <i class="fab fa-instagram"></i>
                 </a>
 
-                <a href="#" class="text-white hover:text-blue-400 hover:scale-110 transition duration-300">
+                <a href="{{settings('tiktok')}}" class="text-white hover:text-blue-400 hover:scale-110 transition duration-300">
                     <i class="fab fa-tiktok"></i>
                 </a>
 
-                <a href="#" class="text-red-500 hover:text-white hover:scale-110 transition duration-300">
+                <a href="{{settings('youtube')}}" class="text-red-500 hover:text-white hover:scale-110 transition duration-300">
                     <i class="fab fa-youtube"></i>
                 </a>
 
-                <a href="#" class="text-sky-500 hover:text-white hover:scale-110 transition duration-300">
+                <a href="{{settings('linkedin')}}" class="text-sky-500 hover:text-white hover:scale-110 transition duration-300">
                     <i class="fab fa-linkedin"></i>
                 </a>
 

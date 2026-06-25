@@ -5,11 +5,13 @@ use App\Http\Controllers\BlogcategoryController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BlogtagsController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\BrandfeatureController;
 use App\Http\Controllers\CartItemsController;
 use App\Http\Controllers\CartsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\dashboard;
+use App\Http\Controllers\FeaturedSectionController;
 use App\Http\Controllers\Homecontroller;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemsController;
@@ -132,8 +134,8 @@ route::put('sliders/update/{id}', [SliderController::class, 'update'])->name('sl
 route::delete('sliders/delete/{id}', [SliderController::class, 'delete'])->name('sliders.destroy');
 
 // carts routes
-Route::get('cart/index', [CartsController::class, 'index']) ->middleware('auth')->name('carts.index');
-Route::post('cart/store', [CartsController::class, 'store'])->middleware('auth')->name('carts.store');
+Route::get('cart/index', [CartsController::class, 'index']) ->middleware(['auth', 'verified'])->name('carts.index');
+Route::post('cart/store', [CartsController::class, 'store'])->middleware(['auth', 'verified'])->name('carts.store');
 Route::delete('cart/delete/{id}', [CartsController::class, 'delete'])->name('carts.destroy');
 Route::post('cart/update/{id}', [CartsController::class, 'update'])->name('carts.update');
 Route::get('cart/checkout', [CartsController::class, 'checkout'])->name('carts.checkout');
@@ -177,6 +179,15 @@ Route::get('/advertisement/items/{type}', [AdvertisementController::class,'getIt
 //get products category brand route
 // Route::get('/get-Products', [AdvertisementController::class,'getProducts'])->name('getProducts');
 
+
+//category feature routes
+Route::get('featured/create', [FeaturedSectionController::class, 'create'])->name('featured.create');
+Route::post('featured/store', [FeaturedSectionController::class, 'store'])->name('featured.store');
+
+// brand feature routes
+Route::get('brandfeatured/create', [BrandfeatureController::class, 'create'])->name('brandfeature.create');
+Route::post('brandfeatured/store',[BrandfeatureController::class, 'store'])->name('brandfeature.store');
+
 // frontend routes
 
 
@@ -194,4 +205,9 @@ Route::get('frontend/category/index/{id}',[CategoryController::class,'details'])
 
 // productsdetails route
 Route::get('frontend/products/productdetails/{id}',[productsController::class,'productdetails'])->name('frontend.product.productdetails');
+
+// fallback route
+Route::fallback(function () {
+    return view('fallback.notfound49#$@#$#$#');
+})->name('404');
 require __DIR__.'/auth.php';

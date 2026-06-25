@@ -3,7 +3,7 @@
 
         @foreach($categories as $category)
         <div class="swiper-slide">
-            
+            <a href="{{'frontend.category.index',$category->id}}">
             <div class="bg-white border border-gray-100 shadow-sm rounded-2xl p-6 
                         hover:shadow-xl hover:-translate-y-2 transition duration-300 h-full">
 
@@ -18,7 +18,7 @@
                 </h3>
 
             </div>
-
+<a>
         </div>
         @endforeach
 

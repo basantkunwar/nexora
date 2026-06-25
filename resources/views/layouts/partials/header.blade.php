@@ -51,13 +51,13 @@ href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
         <!-- Social -->
         <div class="flex gap-5 text-blue-600 text-lg">
-            <a href="#" class="hover:text-blue-700 transition">
+            <a href="{{settings('facebook')}}" class="hover:text-blue-700 transition">
                 <i class="fab fa-facebook"></i>
             </a>
-            <a href="#" class="hover:text-blue-700 transition">
+            <a href="{{settings('tiktok')}}" class="hover:text-blue-700 transition">
                 <i class="fab fa-tiktok"></i>
             </a>
-            <a href="#" class="hover:text-blue-700 transition">
+            <a href="{{settings('instagram')}}" class="hover:text-blue-700 transition">
                 <i class="fab fa-instagram"></i>
             </a>
         </div>

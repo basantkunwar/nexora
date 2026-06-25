@@ -180,6 +180,45 @@
            <i class="fa-solid fa-rectangle-ad"></i> Advertisement banner
             </a>
 
+<div x-data="{ openFeatured: false }">
+
+    <!-- Parent Menu -->
+    <button
+        @click="openFeatured = !openFeatured"
+        class="w-full flex items-center justify-between px-5 py-3 rounded-xl hover:bg-white/10 transition-all duration-300"
+    >
+        <div class="flex items-center gap-3">
+           <i class="fa-solid fa-gem"></i>
+            <span>Featured Section</span>
+        </div>
+
+        <i
+            class="fa-solid fa-chevron-down text-sm transition-transform duration-300"
+            :class="{ 'rotate-180': openFeatured }"
+        ></i>
+    </button>
+
+    <!-- Dropdown Items -->
+    <div
+        x-show="openFeatured"
+        x-transition
+        class="ml-6 mt-2 space-y-2"
+    >
+        <a href="{{ route('featured.create') }}"
+            class="flex items-center gap-3 px-5 py-3 rounded-xl hover:bg-white/10 hover:translate-x-1 transition-all duration-300">
+            <i class="fa-solid fa-layer-group text-blue-400"></i>
+        Category section
+        </a>
+
+        <a href="{{route('brandfeature.create')}}"
+            class="flex items-center gap-3 px-5 py-3 rounded-xl hover:bg-white/10 hover:translate-x-1 transition-all duration-300">
+            <i class="fa-solid fa-award text-yellow-400"></i>
+        Brand section
+        </a>
+    </div>
+
+</div>
+
              <!-- Main Blog Link -->
     <div x-data="{ open: false }" class="relative">
 
