@@ -6,11 +6,12 @@
             <h1 class="text-3xl font-bold text-slate-800">Blogs</h1>
             <p class="text-slate-500 mt-1">Manage all blog posts</p>
         </div>
-
+@can('ceate')
         <a href="{{ route('blogs.create') }}"
            class="px-5 py-2.5 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition">
             Add Blog
         </a>
+        @endcan
     </div>
     <div class="mb-2">
         <form action="{{ route('blogs.index') }}" class="grid grid-cols-1 md:grid-cols-6 gap-2">
@@ -91,11 +92,11 @@
                         <th class="px-5 py-4 text-left text-sm font-semibold text-slate-700 border-r border-slate-200">
                             Created
                         </th>
-
+@can('action')
                         <th class="px-5 py-4 text-center text-sm font-semibold text-slate-700">
                             Action
                         </th>
-
+@endcan
                     </tr>
                 </thead>
 
@@ -148,8 +149,9 @@
                         <td class="px-5 py-4 border-r border-slate-200 text-sm text-slate-500">
                             {{ $blog->created_at->format('d M Y') }}
                         </td>
-
+@can('edit')
                         <td class="px-5 py-4">
+                            
                             <div class="flex justify-center gap-2">
 
                                 <a href="{{ route('blogs.edit', $blog->id) }}"
@@ -157,6 +159,7 @@
                                     Edit
                                 </a>
 
+@can('delete')
                                 <form action="{{ route('blogs.destroy', $blog->id) }}"
                                       method="POST">
                                     @csrf
@@ -168,10 +171,10 @@
                                         Delete
                                     </button>
                                 </form>
-
+@endcan
                             </div>
                         </td>
-
+@endcan
                     </tr>
 
                     @empty

@@ -68,7 +68,7 @@
                             <th class="px-6 py-4">Brand Name</th>
                             <th class="px-6 py-4">Description</th>
                             <th class="px-6 py-4">Status</th>
-                            <th class="px-6 py-4 text-center">Actions</th>
+                       @can('action')     <th class="px-6 py-4 text-center">Actions</th>@endcan
                         </tr>
                     </thead>
 
@@ -110,6 +110,7 @@
                             </td>
 
                             <!-- Actions -->
+                            @can('update')
                             <td class="px-6 py-4">
 
                                 <div class="flex justify-center gap-2">
@@ -121,6 +122,7 @@
                                     </a>
 <a href="" class="px-3 py-2 bg-green-500 text-white"> view</a>
                                     <!-- Delete -->
+       @can('delete')                             
                                     <form action="{{ route('brands.destroy', $brand->id) }}"
                                           method="POST"
                                           onsubmit="return confirm('Are you sure?')">
@@ -134,11 +136,11 @@
                                         </button>
 
                                     </form>
-
+@endcan
                                 </div>
 
                             </td>
-
+@endcan
                         </tr>
                         @endforeach
 

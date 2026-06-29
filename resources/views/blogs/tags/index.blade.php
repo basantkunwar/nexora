@@ -9,11 +9,12 @@
             <h2 class="text-2xl font-semibold text-slate-800">Tags</h2>
             <p class="text-sm text-slate-500 mt-1">Manage blog tags easily</p>
         </div>
-
+@can('ceate')
         <a href="{{ route('blogs.tags.create') }}"
            class="px-4 py-2 bg-slate-800 text-white text-sm rounded-lg hover:bg-slate-700 transition">
             + Add Tag
         </a>
+        @endcan
 
     </div>
     <div class="mb-2">
@@ -51,10 +52,11 @@
                         <th class="px-6 py-4 text-left text-sm font-semibold text-slate-700 border-r border-slate-200">
                             Created At
                         </th>
-
+@can('action')
                         <th class="px-6 py-4 text-center text-sm font-semibold text-slate-700">
                             Action
                         </th>
+                        @endcan
 
                     </tr>
                 </thead>
@@ -82,7 +84,7 @@
                         <td class="px-6 py-4 border-r border-slate-200 text-sm text-slate-500">
                             {{ $tag->created_at->format('d M Y') }}
                         </td>
-
+@can('edit')
                         <td class="px-6 py-4">
                             <div class="flex justify-center gap-2">
 
@@ -90,7 +92,8 @@
                                 <a href="{{ route('blogs.tags.edit', $tag->id) }}"
                                    class="px-3 py-2 text-sm border border-slate-300 rounded-lg hover:bg-slate-100 transition">
                                     Edit
-                                </a>
+         
+@can('delete')
 
                                 <!-- DELETE -->
                                 <form action="{{ route('blogs.tags.destroy', $tag->id) }}"
@@ -104,12 +107,13 @@
                                     </button>
 
                                 </form>
+@endcan
 
                             </div>
                         </td>
 
                     </tr>
-
+@endcan
                     @empty
 
                     <tr>

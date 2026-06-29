@@ -7,16 +7,27 @@ use App\Models\Products;
 use App\Models\Blog;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class Dashboard extends Controller
 {
     //
     public function index(){
-        if(!auth()->user()->hasRole('admin|super-admin')) {
-            
-            return redirect()->route('dashboard');
-        };
+       
+        $data = [];
+
+    // User data (everyone)
+
+    $data['myOrderCount'] = auth()->user()->orders()->count();
+    $data['myTotalAmount'] = auth()->user()->orders()->where('grand_total', '>', 0)->sum('grand_total');
+    
+
+    // Admin data
+    if (auth()->user()->hasRole('super-admin')) {
+        $data['totalOrders'] = Order::count();
+        $data['grandTotal'] = Order::where('grand_total', '>', 0)->sum('grand_total');
+    }
         $category=Category::all();
         $blog=Blog::all();
         $brand=Brand::all();
@@ -28,6 +39,8 @@ class Dashboard extends Controller
             'category'=>$category,
             'blog'=>$blog,
             'brand'=>$brand
-        ]);
+
+        ],$data);
     }
+    
 }

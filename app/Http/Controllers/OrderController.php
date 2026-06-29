@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\OrderdetailsRequest;
 use App\Models\cartItems;
 use App\Models\Carts;
 use App\Models\Order;
@@ -13,8 +15,9 @@ use App\Mail\orderplacemail;
 class OrderController extends Controller
 {
     //
-   public function store(Request $request)
+   public function store(OrderdetailsRequest $request)
 {
+    $validate=$request->validated();
     $cart = Carts::where('user_id', auth()->id())->firstOrFail();
 
     $cartItems = CartItems::where('cart_id', $cart->id)->get();
@@ -96,16 +99,37 @@ public function index()
     return view('order.index', compact('orders'));
 }
 
-public function show($id){
-    $order=Order::find($id);
-    $orderitems=OrderItems::where('order_id',$order->id)->get();
-    return view('order.show',compact('order','orderitems'));
+public function show($id)
+{
+    if (auth()->user()->hasRole('super-admin|admin|manager')) {
+
+        $order = Order::findOrFail($id);
+
+    } else {
+
+        $order = Order::where('id', $id)
+            ->where('user_id', auth()->id())
+            ->firstOrFail();
+    }
+
+    $orderitems = OrderItems::where('order_id', $order->id)->get();
+
+    return view('order.show', compact('order', 'orderitems'));
+}
+
+public function myorders()
+{
+    $orders = Order::where('user_id', auth()->id())
+        ->latest()
+        ->paginate(10);
+
+    return view('order.index', compact('orders'));
 }
 public function pending(Order $order)
 {
     $orders=Order::where('status','pending')->latest()->paginate(5);
 
-    return view('order.confirm', compact('orders'));
+    return view('order.pending', compact('orders'));
 }
 public function confirmed(Order $order)
 {

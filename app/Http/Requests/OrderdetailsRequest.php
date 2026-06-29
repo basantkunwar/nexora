@@ -24,14 +24,14 @@ class OrderdetailsRequest extends FormRequest
     {
         return [
             //
-            'number'=>'required',
-            'province'=>'required',
+            'phone'=>'required',
+            'province'=>'nullable',
             'district'=>'required',
-            'manicipality'=>'required',
+            'city'=>'required',
             'ward'=>'required',
             'address'=>'required',
-            'landmark'=>'required',
-            'ordernote'=>'required',
+            'landmark'=>'nullable',
+            'notes'=>'nullable',
         ];
     }
 }

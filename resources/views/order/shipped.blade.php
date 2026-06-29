@@ -56,11 +56,10 @@
                     <td class="p-4">
                         {{ $order->created_at->format('d M Y') }}
                     </td>
-
-                    <td class="p-4 text-center">
+   <td class="text-center p-4">
 
                         <form action="{{ route('orders.status',$order->id) }}"
-                              method="POST">
+                              method="POST" class="flex justify-center gap-2">
 
                             @csrf
                             @method('PATCH')
@@ -81,13 +80,14 @@
                                 onclick="return confirm('Change order status?')"
                                 class="{{ $colors[$order->status] ?? 'bg-gray-500' }} text-white px-4 py-2 rounded-lg capitalize">
 
-                                {{ $order->status }}
+                                change status
 
                             </button>
-
+                            <span class="text-white bg-green-600 py-2 rounded-lg px-4">{{$order->status}}</span>
                         </form>
-
+                        
                     </td>
+
 
                     <td class="flex justify-center gap-2 pt-4">
 

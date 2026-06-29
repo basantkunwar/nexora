@@ -14,11 +14,12 @@
                     Manage all your products here
                 </p>
             </div>
-
+@can('ceate')
             <a href="{{ route('products.create') }}"
                class="bg-indigo-600 text-white px-5 py-3 rounded-xl shadow hover:bg-indigo-700 transition">
                 + Add Product
             </a>
+            @endcan
         </div>
     </div>
 <div class="mb-2">
@@ -91,7 +92,7 @@
                             <th class="px-6 py-4">Status</th>
                             <th class="px-6 py-4">Category</th>
                             <th class="px-6 py-4">Brand</th>
-                            <th class="px-6 py-4 text-center">Actions</th>
+                            @can('action')<th class="px-6 py-4 text-center">Actions</th>@endcan
                         </tr>
                     </thead>
 
@@ -149,25 +150,28 @@
                             </span>
                         </td>
 
-
+@can('update', $product)
                             <!-- Actions -->
                             <td class="px-6 py-4">
 
                                 <div class="flex justify-center gap-2">
-
+@can('view', $product)
                                     <!-- View -->
                                     <a href=""
                                        class="px-3 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">
                                         View
                                     </a>
+@endcan
+@can('edit', $product)
 
                                     <!-- Edit -->
                                     <a href="{{route('products.edit', $product->id)}}"
                                        class="px-3 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition">
                                         Edit
                                     </a>
+                                    @endcan
 
-
+@can('delete', $product)
                                  <!-- Delete -->
                                     <form action="{{ route('products.destroy', $product->id) }} "
                                           method="POST"
@@ -182,11 +186,11 @@
                                         </button>
 
                                     </form>
-
+@endcan
                                 </div>
 
                             </td>
-
+@endcan
                         </tr>
                         @endforeach
 

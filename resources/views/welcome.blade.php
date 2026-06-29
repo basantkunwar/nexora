@@ -168,17 +168,21 @@
 
     </div>
 </section>
-{{-- category featured products --}}
+
+
+{{-- letest products  --}}
+
+{{-- letest products --}}
 <section class="py-6 bg-white">
-    <div class="px-4 sm:px-6 lg:px-8">
+    <div class="px-4 pb-6 sm:px-6 lg:px-8">
 
         <h2 class="text-2xl font-bold mb-6">
-            
+            Letest Products
         </h2>
 
         <div class="relative">
 
-            <x-featuredproducts />
+            <x-leteastproducts/>
 
             <div class="category-prev swiper-button-prev"></div>
             <div class="category-next swiper-button-next"></div>
@@ -187,9 +191,6 @@
 
     </div>
 </section>
-
-
-
 
 
 
@@ -227,17 +228,21 @@
 @endif
 <br>
 
-{{-- all productcts --}}
+
+
+
+
+{{-- category featured products --}}
 <section class="py-6 bg-white">
     <div class="px-4 sm:px-6 lg:px-8">
 
         <h2 class="text-2xl font-bold mb-6">
-            All Products
+            
         </h2>
 
         <div class="relative">
 
-            <x-allproductsslide />
+            <x-featuredproducts />
 
             <div class="category-prev swiper-button-prev"></div>
             <div class="category-next swiper-button-next"></div>
@@ -246,6 +251,9 @@
 
     </div>
 </section>
+
+
+
 
 
 {{-- topbellow advertise banner --}}
@@ -358,17 +366,24 @@
 
 @endif
 
-{{-- letest products --}}
+
+
+
+{{-- all productcts --}}
 <section class="py-6 bg-white">
-    <div class="px-4 pb-6 sm:px-6 lg:px-8">
-
+    <div class="px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between">
         <h2 class="text-2xl font-bold mb-6">
-            Letest Products
+            All Products
         </h2>
-
+        <a href="{{route('products.search')}}" class="inline-flex items-center px-4 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-xl transition-all duration-200 shadow-sm">
+    <i class="fa-solid fa-eye mr-2"></i>
+    View
+</a>
+</div>
         <div class="relative">
 
-            <x-leteastproducts/>
+            <x-allproductsslide />
 
             <div class="category-prev swiper-button-prev"></div>
             <div class="category-next swiper-button-next"></div>

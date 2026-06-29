@@ -28,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[Homecontroller::class,'index'])->name('home');
 
-Route::get('/dashboard', [dashboard::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [dashboard::class, 'index'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -162,7 +162,9 @@ Route::get('/order/pending', [OrderController::class, 'pending'])->name('orders.
  Route::get('/order/confirm', [OrderController::class, 'confirmed'])->name('orders.confirmed');
  Route::get('/order/process', [OrderController::class, 'process'])->name('orders.process');
  Route::get('/order/shipped', [OrderController::class, 'shipped'])->name('orders.shipped');
- Route::get('/order/delivered', [OrderController::class, 'delivered'])->name('orders.delivered');   
+ Route::get('/order/delivered', [OrderController::class, 'delivered'])->name('orders.delivered'); 
+//  my orders route
+Route::get('myorders', [OrderController::class, 'myorders'])->name('myorders');
 
 // order item route
 Route::get('orderstatus/index',[OrderItemsController::class,'index'])->name('orderstatus.index');

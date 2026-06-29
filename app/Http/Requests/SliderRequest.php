@@ -34,7 +34,13 @@ class SliderRequest extends FormRequest
     'text_color'=>'nullable',
     'start_at'=>'required',
     'end_at'=>'required',
-    'status'=>'required'
+    'status'=>'required',
+   'desktop_image' => $this->isMethod('post')
+            ? 'required|desktop_image|mimes:jpg,jpeg,png,webp|max:2048'
+            : 'nullable|desktop_image|mimes:jpg,jpeg,png,webp|max:2048',
+ 'mobile_image' => $this->isMethod('post')
+            ? 'required|mobile_image|mimes:jpg,jpeg,png,webp|max:2048'
+            : 'nullable|mobile_image|mimes:jpg,jpeg,png,webp|max:2048',
         ];
     }
 }

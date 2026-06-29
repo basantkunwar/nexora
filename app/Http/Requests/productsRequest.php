@@ -27,11 +27,14 @@ class productsRequest extends FormRequest
             'name'=>'required',
             'description'=>'required',
             'price'=>'required',
-            'stock'=>'required',
+            'stock'=>'nullable',
             'status'=>'required',
-            'discount'=>'required',
+            'discount'=>'nullable',
             'category_id'=>'required',
-            'brand_id'=>'required'
+            'brand_id'=>'required',
+             'image' => $this->isMethod('post')
+            ? 'required|image|mimes:jpg,jpeg,png,webp|max:2048'
+            : 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ];
     }
 }

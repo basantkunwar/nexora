@@ -5,11 +5,12 @@
     <!-- Header -->
     <div class="flex items-center justify-between mb-6">
        
-
+@can('ceate')
         <a href="{{ route('blogs.categories.create') }}"
            class="px-5 py-2.5 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition">
             Add Category
         </a>
+        @endcan
     </div>
     <div class="mb-2">
         <form action="" class="grid grid-cols-1 md:grid-cols-4 gap-3">
@@ -63,10 +64,11 @@
                         <th class="px-6 py-4 text-left text-sm font-semibold text-slate-700 border-r border-slate-200">
                             Created At
                         </th>
-
+@can('action')
                         <th class="px-6 py-4 text-center text-sm font-semibold text-slate-700">
                             Action
                         </th>
+                        @endcan
 
                     </tr>
                 </thead>
@@ -99,7 +101,7 @@
                         <td class="px-6 py-4 border-r border-slate-200 text-sm text-slate-500">
                             {{ $category->created_at->format('d M Y') }}
                         </td>
-
+@can('edit')
                         <td class="px-6 py-4">
                             <div class="flex justify-center gap-2">
 
@@ -108,6 +110,7 @@
                                     Edit
                                 </a>
 
+@can('delete')
                                 <form action="{{ route('blogs.categories.destroy', $category->id) }}"
                                       method="POST">
                                     @csrf
@@ -119,10 +122,10 @@
                                     </button>
 
                                 </form>
-
+@endcan
                             </div>
                         </td>
-
+@endcan
                     </tr>
 
                     @empty

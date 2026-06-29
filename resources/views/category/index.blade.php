@@ -71,7 +71,7 @@
                             <th class="px-6 py-4 border-b border-slate-200">Category Name</th>
                             <th class="px-6 py-4 border-b border-slate-200">Description</th>
                             <th class="px-6 py-4 border-b border-slate-200">Status</th>
-                            <th class="px-6 py-4 border-b border-slate-200 text-center">Actions</th>
+                       @can('action')     <th class="px-6 py-4 border-b border-slate-200 text-center">Actions</th>@endcan
                         </tr>
                     </thead>
 
@@ -112,15 +112,17 @@
                             </td>
 
                             <!-- Actions -->
+                            @can('update', $category)
                             <td class="px-6 py-4 border-b border-slate-100">
 
                                 <div class="flex justify-center gap-2">
-
+@can('edit', $category)
                                     <a href="{{ route('category.edit', $category->id) }}"
                                        class="px-3 py-1.5 text-xs border border-slate-300 rounded-lg hover:bg-slate-100 transition">
                                         Edit
                                     </a>
-
+                                    @endcan
+@can('delete', $category)
                                     <form action="{{ route('category.destroy', $category->id) }}"
                                           method="POST"
                                           onsubmit="return confirm('Delete this category?')">
@@ -134,11 +136,11 @@
                                         </button>
 
                                     </form>
-
+@endcan
                                 </div>
 
                             </td>
-
+@endcan
                         </tr>
                         @endforeach
 

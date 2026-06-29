@@ -26,7 +26,10 @@ class BrandRequest extends FormRequest
             //
             'name' => 'required',
             'description' => 'required',
-            'status'=>'required'
+            'status'=>'required',
+        'image' => $this->isMethod('post')
+            ? 'required|image|mimes:jpg,jpeg,png,webp|max:2048'
+            : 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ];
     }
 }

@@ -61,15 +61,26 @@
                                 </td>
                        <td class="text-center font-semibold">
                                     {{$item->product->discount}}%</td>
-                                    <td class="text-center font-semibold">
-                              <button type="button" onclick="decrease(this)">-</button>
+                                   <td class="text-center flex justify-center items-center font-semibold">
 
-<input type="text"
-       value="{{ $item->quantity }}"
-       class="quantity w-12 text-center">
+    <button type="button" onclick="decrease(this)">-</button>
 
-<button type="button" onclick="increase(this)">+</button>
-                                    </td>
+    <form action="{{ route('carts.update', $item->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+
+        <input
+            type="text"
+            name="quantity"
+            value="{{ $item->quantity }}"
+            class="quantity w-12 text-center"
+            readonly
+        >
+    </form>
+
+    <button type="button" onclick="increase(this)">+</button>
+
+</td>
                                 <td class="text-center font-bold text-green-600">
                                     {{$item->subtotal}}
                                 </td>

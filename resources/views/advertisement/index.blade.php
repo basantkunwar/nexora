@@ -13,13 +13,13 @@
                 Manage all homepage banners from here
             </p>
         </div>
-
+@can('ceate')
         <a href="{{ route('advertisement.create') }}"
            class="mt-4 md:mt-0 inline-flex items-center gap-2 px-5 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition">
 
             + Add Banner
         </a>
-
+@endcan
     </div>
 
     <!-- Table -->
@@ -39,7 +39,9 @@
                         <th class="px-6 py-4">Link Type</th>
                         <th class="px-6 py-4">Sort</th>
                         <th class="px-6 py-4">Status</th>
+                        @can('action')
                         <th class="px-6 py-4 text-right">Actions</th>
+                        @endcan
                     </tr>
 
                 </thead>
@@ -89,7 +91,7 @@
                                 @endif
 
                             </td>
-
+@can('edit')
                             <!-- Actions -->
                             <td class="px-6 py-4 text-right">
 
@@ -102,6 +104,7 @@
                                         Edit
                                     </a>
 
+@can('delete')
                                     <!-- Delete -->
                                     <form action="{{ route('advertisement.destroy', $ad->id) }}"
                                           method="POST"
@@ -115,13 +118,13 @@
                                         </button>
 
                                     </form>
-
+@endcan
                                 </div>
 
                             </td>
 
                         </tr>
-
+@endcan
                     @empty
 
                         <tr>

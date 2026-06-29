@@ -31,6 +31,9 @@ class BlogRequest extends FormRequest
             'blogcategory_id' => 'required',
             'blogtag_id' => 'required',
             'links' => 'required',
+         'image' => $this->isMethod('post')
+            ? 'required|image|mimes:jpg,jpeg,png,webp|max:2048'
+            : 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
 
         ];
     }

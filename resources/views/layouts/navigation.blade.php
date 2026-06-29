@@ -10,7 +10,7 @@
             </h2>
 
             <p class="text-slate-400 text-sm mt-2">
-                Admin Dashboard
+      @if(Auth::user()->hasRole('admin|super-admin|manager'))     Admin Dashboard @else User Dashboard @endif
             </p>
         </div>
 
@@ -20,8 +20,10 @@
             <a href="{{ route('dashboard') }}"
                 class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gradient-to-r from-violet-600 to-indigo-500 text-white font-medium shadow-lg shadow-indigo-500/30">
               <i class="fa-solid fa-chart-line"></i> Dashboard
-            </a>
+        </a>
 
+{{-- role assign --}}
+@role('admin|super-admin|manager')
           <!-- Orders Dropdown -->
 <div x-data="{ open: false }">
 
@@ -110,7 +112,20 @@
     </div>
 
 </div>
+@endrole
 
+
+<a href="{{ route('myorders') }}"
+            class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-white/10 transition">
+
+        <i class="fa-solid fa-box-open text-blue-300"></i>
+
+            <span>my Orders</span>
+
+        </a>
+
+
+@role('admin|super-admin|manager')        
             <div x-data="{ openProducts: false }">
 
                 <!-- Parent Menu -->
@@ -141,13 +156,13 @@
                     x-show="openProducts"
                     x-transition
                     class="ml-8 mt-3 space-y-2 border-l border-white/10 pl-4">
-
+@can('create')
                     
  <a href="{{ route('products.create') }}"
                         class="block px-4 py-2 text-sm text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition">
                         <i class="fa-solid fa-plus text-white-500 text-sm"></i> Add products
                     </a>
-
+@endcan
                     <a href="{{ route('products.index') }}"
                         class="block px-4 py-2 text-sm text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition">
                        <i class="fa-solid fa-eye text-white-500 text-sm"></i> view
@@ -163,6 +178,9 @@
 
             </div>
 
+@endrole
+
+@role('admin|super-admin|manager')
             <a href="{{ route('category.index') }}"
                 class="flex items-center gap-3 px-5 py-3 rounded-xl hover:bg-white/10 hover:translate-x-1 transition-all duration-300">
              <i class="fa-solid fa-tags"></i> Categories
@@ -268,12 +286,15 @@
 
 
 
-            <a href="{{ route('brands.index') }}"
-                class="flex items-center gap-3 px-5 py-3 rounded-xl hover:bg-white/10 hover:translate-x-1 transition-all duration-300">
-            <i class="fa-solid fa-star"></i> Brands
-            </a>
+ <a href="{{ route('brands.index') }}"
+ class="flex items-center gap-3 px-5 py-3 rounded-xl hover:bg-white/10 hover:translate-x-1 transition-all duration-300">
+<i class="fa-solid fa-star"></i> Brands
+ </a>
 
 
+@endrole            
+
+@role('super-admin')
 <div x-data="{ open: false }" class="relative">
 
     <!-- MAIN BUTTON -->
@@ -319,8 +340,9 @@
        
     </div>
 </div>
+@endrole
 
-
+@role('admin|super-admin')
             <a href="#"
                 class="flex items-center gap-3 px-5 py-3 rounded-xl hover:bg-white/10 hover:translate-x-1 transition-all duration-300">
              <i class="fa-solid fa-envelope"></i> Messages
@@ -328,23 +350,20 @@
 
             <div class="relative group">
 
-   
+   @endrole
 
             
             
 
 
             
-            {{-- <a href="{{route('blogs.index')}}"
-                class="flex items-center gap-3 px-5 py-3 rounded-xl hover:bg-white/10 hover:translate-x-1 transition-all duration-300">
-              <i class="fa-solid fa-newspaper"></i> cate lo
-            </a> --}}
-
-            <a href="{{route('settings.index')}}"
+      
+@role('admin|super-admin')
+ <a href="{{route('settings.index')}}"
                 class="flex items-center gap-3 px-5 py-3 rounded-xl hover:bg-white/10 hover:translate-x-1 transition-all duration-300">
              <i class="fa-solid fa-gear"></i> Settings
             </a>
-
+@endrole
         </nav>
 
     </aside>

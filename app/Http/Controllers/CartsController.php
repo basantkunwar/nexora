@@ -122,5 +122,13 @@ class CartsController extends Controller
         }
         return view('cart.checkout', compact('carts', 'cartitems', 'user'));
     }
+
+
+    public function update(Request $request, $id){
+        $cartItem = cartItems::findOrFail($id);
+        $cartItem->quantity = $request->quantity;
+        $cartItem->save();
+        return back();
+    }
     
 }

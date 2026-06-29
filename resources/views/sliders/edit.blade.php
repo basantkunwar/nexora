@@ -6,7 +6,7 @@
       method="POST"
       enctype="multipart/form-data"
       class="space-y-6">
-
+@method('PUT')
     @csrf
 
     {{-- Title --}}

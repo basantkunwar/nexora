@@ -197,20 +197,10 @@
             <div class="flex justify-between items-center">
 
                 <p class="font-semibold">
-                    Order Status:
-                    @if($order->status == 'pending')
-                        <span class="ml-2 bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">
-                            Pending
-                        </span>
-                    @elseif($order->status == 'confirmed')
-                        <span class="ml-2 bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
-                            Confirmed
-                        </span>
-                    @endif
-                </p>
-
+                    Order Status: <span class="capitalize text-green-600 bg-green-100 py-1 px-3 rounded-lg">{{ $order->status }}</span>
+                   
             </div>
-
+@can('super-admin')
             @if($order->status == 'pending')
                 <form action="{{ route('orders.confirm', $order->id) }}"
                       method="POST"
@@ -228,6 +218,7 @@
 
                 </form>
             @endif
+            @endcan
 
             <div class="flex justify-end mt-4 ">
                 <button onclick="window.print()" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition">print</button>
