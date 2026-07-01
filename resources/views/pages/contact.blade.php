@@ -139,7 +139,7 @@
                     </h3>
 
                     <form action="{{route('pages.create')}}" method="POST">
-
+@csrf
                         <div class="grid md:grid-cols-2 gap-6">
 
                             <div>
@@ -285,8 +285,8 @@
 
             </div>
 
-            <form action="productsFeedback.php" method="POST">
-
+            <form action="{{route('pages.create')}}" method="POST">
+@csrf
                 <div class="grid md:grid-cols-2 gap-6">
 
                     <div>
@@ -307,6 +307,18 @@
 
                         <input type="email"
                             name="email"
+                            placeholder="Enter your email"
+                            class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 focus:border-black focus:ring-0">
+                    </div>
+
+                    
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">
+                            Phone Number
+                        </label>
+
+                        <input type="text"
+                            name="phone"
                             placeholder="Enter your email"
                             class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 focus:border-black focus:ring-0">
                     </div>

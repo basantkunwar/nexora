@@ -4,8 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Repair extends Model
+class Message extends Model
 {
     //
-    protected $guarded = ['id'];
 }

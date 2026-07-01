@@ -174,12 +174,12 @@
                 </h2>
             </div>
 
-            <form action="" method="POST">
+            <form action="{{route('repair.store')}}" method="POST">
                 @csrf
 
                 <div class="grid md:grid-cols-2 gap-5">
 
-                    <input type="text" name="fullname"
+                    <input type="text" name="name"
                         placeholder="Full Name"
                         class="h-14 rounded-xl border border-slate-300 px-4">
 
@@ -208,7 +208,7 @@
                         placeholder="Address"
                         class="md:col-span-2 rounded-xl border border-slate-300 p-4"></textarea>
 
-                    <textarea name="additional_info"
+                    <textarea name="info"
                         rows="5"
                         placeholder="Additional Information of device issue"
                         class="md:col-span-2 rounded-xl border border-slate-300 p-4"></textarea>

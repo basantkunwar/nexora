@@ -87,7 +87,7 @@
                                         Edit
                                     </a>
 
-                                    <form action="" method="POST">
+                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
 

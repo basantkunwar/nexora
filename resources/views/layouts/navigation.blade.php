@@ -114,7 +114,7 @@
 </div>
 @endrole
 
-
+@unlessrole('admin|super-admin|manager|employee')
 <a href="{{ route('myorders') }}"
             class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-white/10 transition">
 
@@ -123,7 +123,7 @@
             <span>my Orders</span>
 
         </a>
-
+@endunlessrole
 
 @role('admin|super-admin|manager')        
             <div x-data="{ openProducts: false }">
@@ -343,11 +343,41 @@
 @endrole
 
 @role('admin|super-admin')
-            <a href="#"
-                class="flex items-center gap-3 px-5 py-3 rounded-xl hover:bg-white/10 hover:translate-x-1 transition-all duration-300">
-             <i class="fa-solid fa-envelope"></i> Messages
-            </a>
+           <div x-data="{ open: false }" class="relative">
 
+    <button
+        @click="open = !open"
+        class="w-full flex items-center justify-between px-5 py-3 rounded-xl hover:bg-white/10 hover:translate-x-1 transition-all duration-300">
+
+        <span class="flex items-center gap-3">
+            <i class="fa-solid fa-envelope"></i>
+            Messages
+        </span>
+
+        <i class="fa-solid fa-chevron-down text-sm"></i>
+    </button>
+
+    <div
+        x-show="open"
+        @click.away="open = false"
+        x-transition
+        class="ml-8 mt-2 space-y-1">
+
+        <a href="{{ route('repair.index') }}"
+            class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-white/10 transition">
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+            Repair
+        </a>
+
+        <a href="{{route('contact.index')}}"
+            class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-white/10 transition">
+            <i class="fa-solid fa-briefcase"></i>
+            message
+        </a>
+
+    </div>
+
+</div>
             <div class="relative group">
 
    @endrole

@@ -39,7 +39,7 @@
                                 <th class="text-left p-4">sn</th>
                                 <th class="text-left p-4">Product</th>
                                 <th class="text-center p-4">Price</th>
-                                <th class="text-center p-4">discount </th>
+                        
                                 <th class="text-center p-4">Quantity</th>
                                 <th class="text-center p-4">Subtotal</th>
                                 <th class="text-center p-4">Action</th>
@@ -57,10 +57,9 @@
                                 </td>
 
                                 <td class="text-center font-semibold">
-                                    {{$item->product->price}}
+                                    {{$item->product->finalprice,2}}
                                 </td>
-                       <td class="text-center font-semibold">
-                                    {{$item->product->discount}}%</td>
+                       
                                    <td class="text-center flex justify-center items-center font-semibold">
 
     <button type="button" onclick="decrease(this)">-</button>

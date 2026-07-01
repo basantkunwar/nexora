@@ -65,13 +65,14 @@ Route::put('/category/update/{id}', [CategoryController::class, 'update'])->name
 Route::delete('/category/delete/{id}', [CategoryController::class, 'delete'])->name('category.destroy');
 
 
-// pages route
+// contact routes//pages routes
 Route::get('pages/contact',[ContactController::class,'contact'])->name('pages.contact');
 Route::post('pages/create',[ContactController::class,'create'])->name('pages.create');
-
+route::get('contact/index',[ContactController::class,'index'])->name('contact.index');
 
 // user routes
 Route::get('users/index',[usercontroller::class, 'index'])->name('users.index');
+route::delete('users/delete/{id}',[usercontroller::class, 'delete'])->name('users.destroy');
 
 
 // blog routes
@@ -196,8 +197,8 @@ Route::post('brandfeatured/store',[BrandfeatureController::class, 'store'])->nam
 
 // repair the routes
 Route::get('frontend/repairs/repair', [RepairController::class, 'repair'])->name('frontend.repairs.repair');
-
-// blog routes
+route::post('frontend/repairs/store',[RepairController::class,'store'])->name('repair.store');
+route::get('repair/index',[RepairController::class,'index'])->name('repair.index');// blog routes
 Route::get('frontend/blogs/blog', [BlogController::class, 'blog'])->name('frontend.blogs.blogs');
 Route::get('frontend/blogs/blogdetails/{id}', [BlogController::class, 'blogdetails'])->name('frontend.blogs.blogdetails');
 

@@ -171,29 +171,29 @@
 </div>
 @endrole
 
+@unlessrole('admin|super-admin|manager|employee')
 <div class="mt-10 bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
     <h2 class="text-xl font-semibold text-slate-800 mb-4">
-        my Orders Summary
+        My Orders Summary
     </h2>
 
     <ul class="divide-y divide-slate-200">
         @isset($myTotalAmount)
         <li class="flex justify-between items-center py-3">
-            <span class="text-slate-600">total purchase cost</span>
-            <span class="font-bold text-slate-900"> {{ $myTotalAmount}}</span>
+            <span class="text-slate-600">Total Purchase Cost</span>
+            <span class="font-bold text-slate-900">{{ $myTotalAmount }}</span>
         </li>
         @endisset
-@isset($myOrderCount)
+
+        @isset($myOrderCount)
         <li class="flex justify-between items-center py-3">
-            <span class="text-slate-600">total orders</span>
-            <span class="font-bold text-slate-900">{{$myOrderCount}}</span>
+            <span class="text-slate-600">Total Orders</span>
+            <span class="font-bold text-slate-900">{{ $myOrderCount }}</span>
         </li>
         @endisset
-
-
     </ul>
 </div>
-
+@endunlessrole
         
     </div>
 

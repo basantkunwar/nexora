@@ -21,4 +21,7 @@ class Products extends Model
     public function orderItems(){
         return $this->hasMany(OrderItems::class);
     }
+    public function getfinalpriceAttribute(){
+        return $this->price - ($this->price * $this->discount / 100);
+    }
 }

@@ -12,7 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('repairs', function (Blueprint $table) {
-            $table->id();
+           $table->id();
+            $table->string('name');
+            $table->string('phone');
+            $table->string('email');
+            $table->string('device_name');
+            $table->string('brand_name');
+            $table->string('repair_type');
+            $table->text('address');
+            $table->text('info');
             $table->timestamps();
         });
     }
