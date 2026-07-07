@@ -16,7 +16,7 @@
         </h1>
 
 
-        <form action="{{route('orders.store',$carts)}}" method="POST">
+        <form id="orderForm" action="{{route('orders.store')}}" method="POST">
     @csrf
 
     <div class="grid lg:grid-cols-3 gap-8">
@@ -71,9 +71,9 @@
                             Phone Number
                         </label>
 
-                        <input type="text"
+                        <input type="text" value="{{old('phone')}}"
                             name="phone"
-                            class="w-full border rounded-xl px-4 py-3">
+                            class="w-full border rounded-xl px-4 py-3" required>
                     </div>
 
                     <div>
@@ -82,7 +82,7 @@
                         </label>
 
                         <select name="province"
-                            class="w-full border rounded-xl px-4 py-3">
+                            class="w-full border rounded-xl px-4 py-3" required>
 
                             <option value="">Select Province</option>
                             <option value="Koshi">Koshi</option>
@@ -101,9 +101,9 @@
                             District
                         </label>
 
-                        <input type="text"
+                        <input type="text" value="{{old('district')}}"
                             name="district"
-                            class="w-full border rounded-xl px-4 py-3">
+                            class="w-full border rounded-xl px-4 py-3" required>
                     </div>
 
                     <div>
@@ -112,8 +112,8 @@
                         </label>
 
                         <input type="text"
-                            name="city"
-                            class="w-full border rounded-xl px-4 py-3">
+                            name="city" value="{{old('city')}}"
+                            class="w-full border rounded-xl px-4 py-3" required>
                     </div>
 
                     <div>
@@ -122,8 +122,8 @@
                         </label>
 
                         <input type="text"
-                            name="ward"
-                            class="w-full border rounded-xl px-4 py-3">
+                            name="ward" value="{{old('ward')}}"
+                            class="w-full border rounded-xl px-4 py-3" required>
                     </div>
 
                     <div class="md:col-span-2">
@@ -134,7 +134,7 @@
                         <textarea
                             name="address"
                             rows="3"
-                            class="w-full border rounded-xl px-4 py-3"></textarea>
+                            class="w-full border rounded-xl px-4 py-3" required>{{old('address')}}</textarea>
                     </div>
 
                     <div class="md:col-span-2">
@@ -143,8 +143,8 @@
                         </label>
 
                         <input type="text"
-                            name="landmark"
-                            class="w-full border rounded-xl px-4 py-3">
+                            name="landmark" value="{{old('landmark')}}"
+                            class="w-full border rounded-xl px-4 py-3" required>
                     </div>
 
                     <div class="md:col-span-2">
@@ -155,7 +155,7 @@
                         <textarea
                             name="notes"
                             rows="3"
-                            class="w-full border rounded-xl px-4 py-3"></textarea>
+                            class="w-full border rounded-xl px-4 py-3" required>{{old('notes')}}</textarea>
                     </div>
 
                 </div>
@@ -247,10 +247,12 @@
                     </label>
                 </div>
 
-                <button type="submit"
-                    class="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-semibold">
-                    Place Order
-                </button>
+               <button
+    id="placeOrderBtn"
+    type="submit"
+    class="w-full mt-6 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white py-4 rounded-xl font-semibold">
+    Place Order
+</button>
 
             </div>
 
@@ -261,6 +263,25 @@
 </form>
 
     </div>
+<script>
+const form = document.querySelector("form");
+const btn = document.getElementById("placeOrderBtn");
 
+form.addEventListener("submit", function () {
+
+    btn.disabled = true;
+    btn.innerHTML = `
+        <svg class="animate-spin h-5 w-5 inline-block mr-2" xmlns="http://www.w3.org/2000/svg"
+            fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10"
+                stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor"
+                d="M4 12a8 8 0 018-8v4l3-3-3-3v4A10 10 002 12h2z">
+            </path>
+        </svg>
+        Placing Order...
+    `;
+});
+</script>
 </body>
 </html>

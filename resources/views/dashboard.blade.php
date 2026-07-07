@@ -113,24 +113,39 @@
             </div>
 
             <!-- Blogs -->
-            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-slate-500 text-sm">
-                            Total Blogs
-                        </p>
-                        <h2 class="text-3xl font-bold text-slate-900 mt-2">
-                            {{ $blog->count() }}
-                        </h2>
-                    </div>
-
-                    <div class="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center">
-                       <i class="fa-solid fa-newspaper"></i> 
-                    </div>
-                </div>
-            </div>
-
+           
         </div>
+
+
+
+{{-- charts are here --}}
+
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 pt-10 gap-6">
+
+    <!-- Brand Chart -->
+    <div class="bg-white rounded-xl shadow p-5">
+        <h2 class="text-lg font-semibold mb-4">
+            Products by Brand
+        </h2>
+
+        <div class="h-64">
+            <canvas id="brandChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Category Chart -->
+    <div class="bg-white rounded-xl shadow p-5">
+        <h2 class="text-lg font-semibold mb-4">
+            Products by Category
+        </h2>
+
+        <div class="h-64">
+            <canvas id="categoryChart"></canvas>
+        </div>
+    </div>
+
+</div>
+
 
         <!-- Recent Activity Section -->
        <div class="mt-10 bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
@@ -169,6 +184,78 @@
 
     </ul>
 </div>
+
+
+    </div>
+   
+
+  <script>
+
+const chartColors = [
+    '#3b82f6',
+    '#22c55e',
+    '#f59e0b',
+    '#ef4444',
+    '#8b5cf6',
+    '#06b6d4',
+    '#ec4899',
+    '#14b8a6'
+];
+
+function createChart(id, labels, data) {
+
+    new Chart(document.getElementById(id), {
+
+        type: 'doughnut',
+
+        data: {
+
+            labels: labels,
+
+            datasets: [{
+                data: data,
+                backgroundColor: chartColors,
+                borderWidth: 2
+            }]
+
+        },
+
+        options: {
+
+            responsive: true,
+            maintainAspectRatio: false,
+
+            cutout: '60%',
+
+            plugins: {
+
+                legend: {
+                    position: 'bottom'
+                }
+
+            }
+
+        }
+
+    });
+
+}
+
+createChart(
+    'brandChart',
+    @json($brands->pluck('name')),
+    @json($brands->pluck('products_count'))
+);
+
+createChart(
+    'categoryChart',
+    @json($categories->pluck('name')),
+    @json($categories->pluck('products_count'))
+);
+
+</script>
+
+
 @endrole
 
 @unlessrole('admin|super-admin|manager|employee')
@@ -195,6 +282,5 @@
 </div>
 @endunlessrole
         
-    </div>
 
 </x-app-layout>

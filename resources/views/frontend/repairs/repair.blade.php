@@ -181,37 +181,41 @@
 
                     <input type="text" name="name"
                         placeholder="Full Name"
-                        class="h-14 rounded-xl border border-slate-300 px-4">
+                        value="{{old('name')}}"
+                        class="h-14 rounded-xl border border-slate-300 px-4" required>
 
-                    <input type="text" name="phone"
-                        placeholder="Phone Number"
+                    <input type="text" value="{{old('phone')}}" name="phone"
+                        placeholder="Phone Number" required
                         class="h-14 rounded-xl border border-slate-300 px-4">
 
                     <input type="email" name="email"
-                        placeholder="Email Address"
+                    value="{{old('email')}}"
+                        placeholder="Email Address" required
                         class="h-14 rounded-xl border border-slate-300 px-4">
 
                     <input type="text" name="device_name"
                         placeholder="Device Name"
-                        class="h-14 rounded-xl border border-slate-300 px-4">
+                        value="{{old('device_name')}}"
+                        class="h-14 rounded-xl border border-slate-300 px-4" required>
 
                     <input type="text" name="brand_name"
                         placeholder="Brand Name"
-                        class="h-14 rounded-xl border border-slate-300 px-4">
+                        value="{{old('brand_name')}}"
+                        class="h-14 rounded-xl border border-slate-300 px-4" required>
 
                     <input type="text" name="repair_type"
-                        placeholder="Repair Type"
-                        class="h-14 rounded-xl border border-slate-300 px-4">
+                        placeholder="Repair Type" value="{{old('repair_type')}}"
+                        class="h-14 rounded-xl border border-slate-300 px-4" required>
 
                     <textarea name="address"
                         rows="4"
                         placeholder="Address"
-                        class="md:col-span-2 rounded-xl border border-slate-300 p-4"></textarea>
+                        class="md:col-span-2 rounded-xl border border-slate-300 p-4" required>{{old('address')}}</textarea>
 
                     <textarea name="info"
-                        rows="5"
+                        rows="5" required
                         placeholder="Additional Information of device issue"
-                        class="md:col-span-2 rounded-xl border border-slate-300 p-4"></textarea>
+                        class="md:col-span-2 rounded-xl border border-slate-300 p-4">{{old('info')}}</textarea>
 
                     <button
                         class="md:col-span-2 h-14 bg-blue-700 hover:bg-blue-800 text-white rounded-xl font-semibold transition">

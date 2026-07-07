@@ -31,6 +31,8 @@ class Dashboard extends Controller
         $category=Category::all();
         $blog=Blog::all();
         $brand=Brand::all();
+          $brands = Brand::withCount('products')->get();
+          $categoryies = Category::withCount('products')->get();
         $user=User::all();
         $products=Products::all();
         return view('dashboard',[
@@ -38,7 +40,9 @@ class Dashboard extends Controller
             'products'=>$products,
             'category'=>$category,
             'blog'=>$blog,
-            'brand'=>$brand
+            'brand'=>$brand,
+            'brands'=>$brands,
+            'categories'=>$categoryies
 
         ],$data);
     }

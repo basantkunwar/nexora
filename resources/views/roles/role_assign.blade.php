@@ -21,7 +21,7 @@
                         </label>
 
                         <select
-                            name="role_id"
+                            name="role_id" required
                             class="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-500"
                             required>
 

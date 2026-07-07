@@ -90,7 +90,7 @@ Route::post('blogs/categories/store', [BlogcategoryController::class, 'store'])-
 Route::get('blogs/categories/index', [BlogcategoryController::class, 'index'])->name('blogs.categories.index');
 Route::get('blogs/categories/edit/{id}', [BlogcategoryController::class, 'edit'])->name('blogs.categories.edit');
 Route::put('blogs/categories/update/{id}', [BlogcategoryController::class, 'update'])->name('blogs.categories.update');
-Route::delete('blogs/categories/delete/{id}', [BlogcategoryController::class, 'destroy'])->name('blogs.categories.destroy');
+Route::delete('blogs/categories/delete/{id}', [BlogcategoryController::class, 'delete'])->name('blogs.categories.destroy');
 
 
 // blog tags routes
@@ -138,8 +138,9 @@ route::delete('sliders/delete/{id}', [SliderController::class, 'delete'])->name(
 Route::get('cart/index', [CartsController::class, 'index']) ->middleware(['auth', 'verified'])->name('carts.index');
 Route::post('cart/store', [CartsController::class, 'store'])->middleware(['auth', 'verified'])->name('carts.store');
 Route::delete('cart/delete/{id}', [CartsController::class, 'delete'])->name('carts.destroy');
-Route::post('cart/update/{id}', [CartsController::class, 'update'])->name('carts.update');
-Route::get('cart/checkout', [CartsController::class, 'checkout'])->name('carts.checkout');
+// Route::post('cart/store', [CartsController::class,'store'])->name('carts.store');
+Route::post('cart/update/{id}', [CartsController::class,'update'])->name('carts.update');
+Route::get('cart/checkout', [CartsController::class, 'checkout'])->middleware(['auth', 'verified'])->name('carts.checkout');
 
 // cartitems routes
 Route::get('cartitems/index', [CartItemsController::class, 'index'])->name('cartitems.index');
@@ -151,7 +152,7 @@ Route::get('cartitems/checkout', [CartItemsController::class, 'checkout'])->name
 //order routes
 Route::get('order/index', [OrderController::class, 'index'])->name('orders.index');
 Route::get('order/show/{id}',[OrderController::class,'show'])->name('orders.show');
-Route::post('orders/store/{carts}', [OrderController::class, 'store'])->name('orders.store');
+Route::post('orders/store/', [OrderController::class, 'store'])->name('orders.store');
 Route::delete('orders/delete/{order}', [OrderController::class, 'delete'])->name('orders.destroy');
 Route::post('orders/update/{id}', [OrderController::class, 'update'])->name('orders.update');
 Route::get('orders/checkout', [OrderController::class, 'checkout'])->name('orders.checkout');
@@ -164,6 +165,8 @@ Route::get('/order/pending', [OrderController::class, 'pending'])->name('orders.
  Route::get('/order/process', [OrderController::class, 'process'])->name('orders.process');
  Route::get('/order/shipped', [OrderController::class, 'shipped'])->name('orders.shipped');
  Route::get('/order/delivered', [OrderController::class, 'delivered'])->name('orders.delivered'); 
+ Route::patch('/orders/{order}/cancel', [OrderController::class, 'cancel'])
+    ->name('orders.cancel');
 //  my orders route
 Route::get('myorders', [OrderController::class, 'myorders'])->name('myorders');
 

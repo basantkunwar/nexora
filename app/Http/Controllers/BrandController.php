@@ -86,4 +86,13 @@ class BrandController extends Controller
         'products' => $products
     ]);
 }
+
+public function delete($id){
+    $brand=Brand::find($id);
+    if($brand->image){
+        Storage::disk('public')->delete($brand->image);
+    }
+    $brand->delete();
+    return redirect()->route('brands.index');
+}
 }

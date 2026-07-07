@@ -20,7 +20,7 @@ class OrderController extends Controller
     $validate=$request->validated();
     $cart = Carts::where('user_id', auth()->id())->firstOrFail();
 
-    $cartItems = CartItems::where('cart_id', $cart->id)->get();
+    $cartItems = cartItems::where('cart_id', $cart->id)->get();
 
     if ($cartItems->isEmpty()) {
         return back()->with('error', 'Your cart is empty.');
@@ -157,6 +157,26 @@ public function process(Order $order)
 
     return view('order.delivered', compact('orders'));
 }
+
+    public function cancel(Order $order)
+{
+    // Only admin users can cancel
+    if (!auth()->user()->hasRole('super-admin|admin|manager')) {
+        abort(403);
+    }
+
+    // Don't allow cancelling delivered orders
+    if ($order->status === 'delivered') {
+        return back()->with('error', 'Delivered orders cannot be cancelled.');
+    }
+
+    $order->update([
+        'status' => 'cancelled',
+    ]);
+
+    return back()->with('success', 'Order cancelled successfully.');
+}
+
 
 public function changeStatus(Order $order)
 {

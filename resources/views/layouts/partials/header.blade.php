@@ -137,21 +137,32 @@ href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
                     class="absolute right-0 mt-3 w-40 bg-white shadow-lg rounded-lg overflow-hidden"
                 >
                     <a href="{{ route('profile.edit') }}" class="block px-4 py-2 hover:bg-gray-100">
-                        Settings
+                    <i class="fa-solid fa-gears"></i> Settings
                     </a>
 @unlessrole('user')
                     <a href="{{route('dashboard')}}" class="block px-4 py-2 hover:bg-gray-100">
-                        Dashboard
+                        <i class="fa-solid fa-chart-line"></i>   Dashboard
                     </a>
 @endunlessrole
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
+                   <form id="logoutForm" method="POST" action="{{ route('logout') }}">
+    @csrf
 
-                        <button type="submit"
-                            class="w-full text-left px-4 py-2 text-sm text-red-400 hover:text-white hover:bg-red-600 rounded-lg transition">
-                            🚪 Log Out
-                        </button>
-                    </form>
+    <button
+        id="logoutBtn"
+        type="submit"
+        class="w-full text-left px-4 py-3 hover:bg-gray-100">
+        <i class="fa-solid fa-right-from-bracket text-red-500 mr-2"></i>
+        Logout
+    </button>
+</form>
+
+<script>
+document.getElementById('logoutForm').addEventListener('submit', function () {
+    const btn = document.getElementById('logoutBtn');
+    btn.disabled = true;
+    btn.innerHTML = 'Logging out...';
+});
+</script>
                 </div>
 
             </div>
@@ -182,13 +193,6 @@ href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
                 <!-- BRANDS -->
               <x-brandmenu/>
 
-                <li>
-                    <a href="/about" class="hover:text-gray-200 transition">
-                        About Us
-                    </a>
-                </li>
-
-                
 
                 <li>
                     <a href="{{route('frontend.blogs.blogs')}}" class="hover:text-gray-200 transition">
@@ -201,6 +205,14 @@ href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
                         Book a Repair
                     </a>
                 </li>
+
+                   <li>
+                    <a href="/about" class="hover:text-gray-200 transition">
+                        About Us
+                    </a>
+                </li>
+
+                
                 <li>
                     <a href="/emi" class="hover:text-gray-200 transition">
                         EMI

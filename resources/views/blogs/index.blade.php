@@ -6,7 +6,7 @@
             <h1 class="text-3xl font-bold text-slate-800">Blogs</h1>
             <p class="text-slate-500 mt-1">Manage all blog posts</p>
         </div>
-@can('ceate')
+@can('create')
         <a href="{{ route('blogs.create') }}"
            class="px-5 py-2.5 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition">
             Add Blog

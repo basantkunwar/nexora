@@ -52,7 +52,7 @@
 
                             <input type="text"
                                    name="name"
-                                   value="{{ old('name') }}"
+                                   value="{{ old('name') }}" required
                                    placeholder="Enter product name"
                                    class="w-full rounded-xl border border-slate-300 px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                         </div>
@@ -67,7 +67,7 @@
                             </label>
 
                             <input type="number"
-                                   name="price"
+                                   name="price" required
                                    value="{{ old('price') }}"
                                    placeholder="Enter product price"
                                    class="w-full rounded-xl border border-slate-300 px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
@@ -80,7 +80,7 @@
                             </label>
 
                             <input type="text"
-                                   name="discount"
+                                   name="discount" required
                                    value="{{ old('discount') }}"
                                    placeholder="Optional"
                                    class="w-full rounded-xl border border-slate-300 px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
@@ -96,7 +96,7 @@
                             </label>
 
                             <input type="number"
-                                   name="stock"
+                                   name="stock" required
                                    value="{{ old('stock') }}"
                                    placeholder="Available quantity"
                                    class="w-full rounded-xl border border-slate-300 px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
@@ -108,7 +108,7 @@
                                 Product Status
                             </label>
 
-                            <select name="status"
+                            <select name="status" required
                                     class="w-full rounded-xl border border-slate-300 px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                                 <option value="available">Available</option>
                                 <option value="outofstock">OutOfStock</option>
@@ -121,8 +121,8 @@
                                 Product Image
                             </label>
 
-                            <input type="file"
-                                   name="image"
+                            <input type="file" required
+                                   name="image" value="{{old('image')}}"
                                    class="w-full rounded-xl border border-slate-300 px-4 py-3 file:mr-4 file:rounded-lg file:border-0 file:bg-indigo-600 file:px-4 file:py-2 file:text-white hover:file:bg-indigo-700">
                         </div>
 
@@ -134,7 +134,7 @@
                             Product Description
                         </label>
 
-                        <textarea name="description"
+                        <textarea name="description" required
                                   rows="5"
                                   placeholder="Write product details here..."
                                   class="w-full rounded-xl border border-slate-300 px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-none">{{ old('desc') }}</textarea>

@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>nexora</title>
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>Nexora</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
+
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -55,35 +59,30 @@
                                 <td class="p-4">
                                    {{$item->product->name}}
                                 </td>
-
-                                <td class="text-center font-semibold">
-                                    {{$item->product->finalprice,2}}
-                                </td>
+<td class="price text-center font-semibold">
+    {{ $item->product->finalprice }}
+</td>
                        
-                                   <td class="text-center flex justify-center items-center font-semibold">
+                                  <td class="text-center flex justify-center items-center font-semibold">
 
-    <button type="button" onclick="decrease(this)">-</button>
+    <button type="button" onclick="updateQuantity(this, -1)">-</button>
 
-    <form action="{{ route('carts.update', $item->id) }}" method="POST">
-        @csrf
-        @method('PUT')
+    <input
+        type="text"
+        value="{{ $item->quantity }}"
+        class="quantity w-12 text-center"
+        readonly
+    >
 
-        <input
-            type="text"
-            name="quantity"
-            value="{{ $item->quantity }}"
-            class="quantity w-12 text-center"
-            readonly
-        >
-    </form>
+    <button type="button" onclick="updateQuantity(this, 1)">+</button>
 
-    <button type="button" onclick="increase(this)">+</button>
+    <input type="hidden" class="item-id" value="{{ $item->id }}">
 
 </td>
-                                <td class="text-center font-bold text-green-600">
-                                    {{$item->subtotal}}
-                                </td>
 
+<td class="item-subtotal text-center font-bold text-green-600">
+    {{ $item->subtotal }}
+</td>
                                <td class="text-center">
     <form action="{{ route('carts.destroy', $item->id) }}" onsubmit="return confirm('Are you sure to delete this cart item?')" method="POST">
         @csrf
@@ -118,12 +117,14 @@
 
                         <div class="flex justify-between">
                             <span>Total Items</span>
-                            <span>{{$carts->total_items}}</span>
+                            <span id="total-items">{{ $carts->total_items }}</span>
                         </div>
 
                         <div class="flex justify-between">
-                            <span>Subtotal</span>
-                            <span>{{$cartitems->sum('subtotal')}}</span>
+                            <span>grand total</span>
+                            <span id="cart-total" class="text-green-600">
+    {{ $carts->grand_total }}
+</span>
                         </div>
 
                         <div class="flex justify-between">
@@ -160,7 +161,7 @@
     </div>
 
 </body>
-<script>
+{{-- <script>
 function increase(btn) {
     let input = btn.parentElement.querySelector('.quantity');
     input.value = parseInt(input.value) + 1;
@@ -175,5 +176,43 @@ function decrease(btn) {
         input.value = value - 1;
     }
 }
+</script> --}}
+<script>
+function updateQuantity(button, change)
+{
+    let row = button.closest("tr");
+
+    let quantityInput = row.querySelector(".quantity");
+    let subtotalCell = row.querySelector(".item-subtotal");
+    let itemId = row.querySelector(".item-id").value;
+
+    let action = change == 1 ? "increase" : "decrease";
+
+    fetch("/cart/update/" + itemId, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": document
+                .querySelector('meta[name="csrf-token"]')
+                .content
+        },
+        body: JSON.stringify({
+            action: action
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+
+        quantityInput.value = data.quantity;
+
+        subtotalCell.innerHTML = data.subtotal;
+
+        document.getElementById("total-items").innerHTML = data.total_items;
+
+        document.getElementById("cart-total").innerHTML = data.grand_total;
+
+    });
+}
 </script>
+
 </html>

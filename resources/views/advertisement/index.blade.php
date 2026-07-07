@@ -13,7 +13,7 @@
                 Manage all homepage banners from here
             </p>
         </div>
-@can('ceate')
+@can('create')
         <a href="{{ route('advertisement.create') }}"
            class="mt-4 md:mt-0 inline-flex items-center gap-2 px-5 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition">
 

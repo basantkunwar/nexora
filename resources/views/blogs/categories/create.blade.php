@@ -22,7 +22,9 @@
 
                 <input type="text"
                        name="name"
+                       value="{{old('name')}}"
                        placeholder="Enter category name"
+                       required
                        class="w-full px-4 py-3 border border-gray-300 rounded-xl
                               focus:outline-none focus:ring-2 focus:ring-black focus:border-black transition">
 
@@ -35,7 +37,7 @@
     <label class="block text-sm font-medium text-gray-700 mb-1">
         Category Image
     </label>
-    <input type="file" name="image" class="w-full px-4 py-3 border border-gray-300 rounded-xl
+    <input type="file" required value="{{old('image')}}" name="image" class="w-full px-4 py-3 border border-gray-300 rounded-xl
                               focus:outline-none focus:ring-2 focus:ring-black focus:border-black transition">
 </div>
             <!-- SLUG (OPTIONAL) -->
@@ -46,6 +48,8 @@
 
                 <input type="text"
                        name="slug"
+                       required
+                       value="{{old('slug')}}"
                        placeholder="auto-generated or custom slug"
                        class="w-full px-4 py-3 border border-gray-300 rounded-xl
                               focus:outline-none focus:ring-2 focus:ring-black focus:border-black transition">
@@ -63,9 +67,10 @@
 
                 <textarea name="description"
                           rows="4"
+                          required
                           placeholder="Write category description..."
                           class="w-full px-4 py-3 border border-gray-300 rounded-xl
-                                 focus:outline-none focus:ring-2 focus:ring-black focus:border-black transition"></textarea>
+                                 focus:outline-none focus:ring-2 focus:ring-black focus:border-black transition">{{old('description')}}</textarea>
             </div>
 
             <!-- BUTTON -->

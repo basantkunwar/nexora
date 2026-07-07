@@ -30,7 +30,7 @@
                             <label class="block font-semibold text-slate-700 mb-2">
                                 Blog Title
                             </label>
-                            <input type="text" name="title"
+                            <input type="text" required name="title" value="{{old('title')}}"
                                 class="w-full border border-slate-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                                 placeholder="Example: Future of AI in 2026">
                         </div>
@@ -41,8 +41,9 @@
                                 Short Description
                             </label>
                             <textarea name="description" rows="3"
+                            required
                                 class="w-full border border-slate-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
-                                placeholder="Write a short introduction..."></textarea>
+                                placeholder="Write a short introduction...">{{old('description')}}</textarea>
                         </div>
 
                         <!-- FULL CONTENT -->
@@ -54,8 +55,9 @@
                                 Key Points / Highlights
                             </label>
                             <textarea name="points" rows="5"
+                            required
                                 class="w-full border border-slate-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
-                                placeholder="Main points, features, or summary..."></textarea>
+                                placeholder="Main points, features, or summary...">{{old('points')}}</textarea>
                         </div>
 
                     </div>
@@ -82,7 +84,7 @@
                             <label class="block font-semibold mb-2 text-slate-700">
                                 Feature Image
                             </label>
-                            <input type="file" name="image"
+                            <input type="file" name="image" required value="{{old('name')}}"
                                 class="w-full border border-slate-300 rounded-lg px-3 py-2">
                         </div>
 
@@ -92,6 +94,7 @@
                                 YouTube Link (optional)
                             </label>
                             <input type="url" name="links"
+                            required value="{{old('links')}}"
                                 class="w-full border border-slate-300 rounded-lg px-3 py-2"
                                 placeholder="https://youtube.com/...">
                         </div>
@@ -114,6 +117,7 @@
                                 Status
                             </label>
                             <select name="status"
+                            required
                                 class="w-full border border-slate-300 rounded-lg px-3 py-2">
                                 <option value="published">Published</option>
                                 <option value="draft">Draft</option>

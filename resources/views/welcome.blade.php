@@ -176,10 +176,6 @@
 <section class="py-6 bg-white">
     <div class="px-4 pb-6 sm:px-6 lg:px-8">
 
-        <h2 class="text-2xl font-bold mb-6">
-            Letest Products
-        </h2>
-
         <div class="relative">
 
             <x-leteastproducts/>
@@ -438,7 +434,7 @@
 
         <div class="relative">
 
-            <x-blogcomponent/>
+            <x-blogslide />
 
             <div class="category-prev swiper-button-prev"></div>
             <div class="category-next swiper-button-next"></div>

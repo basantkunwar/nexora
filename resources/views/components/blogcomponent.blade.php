@@ -1,35 +1,41 @@
-<div class="swiper Swiper px-4 sm:px-6 lg:px-10 mt-8 mt-8">
-    <div class="swiper-wrapper  flex flex-wrap gap-6">
+<div class="px-4 sm:px-6 lg:px-10 mt-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
 
         @foreach($blogs as $blog)
-        <div class="swiper-slide !h-auto">
-            
-            <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300 flex flex-col h-full">
+        <div class="group">
 
-                <!-- Blog Image -->
-                <img src="{{ asset('storage/'.$blog->image) }}"
-                     class="w-full h-52 object-cover">
+            <div class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-slate-100 h-full flex flex-col">
 
-                <div class="p-5 flex flex-col flex-1">
+                <!-- Image -->
+                <div class="overflow-hidden">
+                    <img src="{{ asset('storage/'.$blog->image) }}"
+                        class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
 
-                    <div class="text-sm text-slate-500 mb-3">
-                        📅 {{ $blog->created_at->format('Y-m-d') }}
+                <!-- Content -->
+                <div class="p-6 flex flex-col flex-1">
+
+                    <div class="flex items-center text-sm text-slate-500 mb-3">
+                        <i class="fa-regular fa-calendar mr-2 text-yellow-500"></i>
+                        {{ $blog->created_at->format('M d, Y') }}
                     </div>
 
-                    <h2 class="text-xl font-bold mb-2">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-3 line-clamp-2">
                         {{ $blog->title }}
                     </h2>
 
-                    <p class="text-slate-500 text-sm flex-1">
-                        {{ Str::limit(strip_tags($blog->description), 100) }}
+                    <p class="text-slate-600 leading-7 flex-1">
+                        {{ Str::limit(strip_tags($blog->description), 120) }}
                     </p>
 
                     <a href="{{ route('frontend.blogs.blogdetails', $blog->id) }}"
-                       class="mt-5 w-full text-center bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-3 rounded-full">
-                        View
+                        class="mt-6 inline-flex justify-center items-center bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-3 rounded-xl transition-all duration-300">
+                        Read More
+                        <i class="fa-solid fa-arrow-right ml-2"></i>
                     </a>
 
                 </div>
+
             </div>
 
         </div>

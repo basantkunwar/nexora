@@ -41,6 +41,7 @@
                         <input type="text"
                                name="name"
                                value="{{ old('name') }}"
+                               required
                                placeholder="Enter category name..."
                                class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 transition">
 
@@ -56,6 +57,8 @@
                         </label>
 
                         <input type="file"
+                        value="{{old('image')}}"
+                          required
                                name="image"
                                class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 transition">
                     </div>
@@ -69,6 +72,7 @@
                         <textarea
                             name="description"
                             rows="4"
+                            required
                             placeholder="Write category description..."
                             class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 transition resize-none">{{ old('description') }}</textarea>
                     </div>
@@ -79,7 +83,7 @@
                             Status
                         </label>
 
-                        <select name="status"
+                        <select name="status" required
                                 class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 transition">
                             <option value="available">available</option>
                             <option value="outofstock">outofstock</option>

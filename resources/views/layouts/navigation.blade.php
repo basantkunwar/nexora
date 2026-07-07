@@ -18,7 +18,7 @@
         <nav class="flex-1 px-4 py-6 space-y-2">
 
             <a href="{{ route('dashboard') }}"
-                class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-gradient-to-r from-violet-600 to-indigo-500 text-white font-medium shadow-lg shadow-indigo-500/30">
+                class="flex items-center gap-3 px-5 hover:bg-white/10 transition py-3 rounded-2xl  from-violet-600 to-indigo-500 text-white font-medium shadow-lg hover:translate-x-1 transition-all duration-300">
               <i class="fa-solid fa-chart-line"></i> Dashboard
         </a>
 
@@ -469,13 +469,25 @@
             <i class="fa-solid fa-user text-violet-500 mr-2"></i> Profile
         </a>
 
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            <button type="submit"
-                    class="w-full text-left px-4 py-3 hover:bg-gray-100">
-                <i class="fa-solid fa-right-from-bracket text-red-500 mr-2"></i> Logout
-            </button>
-        </form>
+       <form id="logoutForm" method="POST" action="{{ route('logout') }}">
+    @csrf
+
+    <button
+        id="logoutBtn"
+        type="submit"
+        class="w-full text-left px-4 py-3 hover:bg-gray-100">
+        <i class="fa-solid fa-right-from-bracket text-red-500 mr-2"></i>
+        Logout
+    </button>
+</form>
+
+<script>
+document.getElementById('logoutForm').addEventListener('submit', function () {
+    const btn = document.getElementById('logoutBtn');
+    btn.disabled = true;
+    btn.innerHTML = 'Logging out...';
+});
+</script>
 
     </div>
 

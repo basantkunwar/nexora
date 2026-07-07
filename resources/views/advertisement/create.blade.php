@@ -104,6 +104,7 @@
 
                             <input
                                 id="imageInput"
+                                value="{{old('image')}}"
                                 type="file"
                                 name="image"
                                 accept="image/*"
@@ -116,7 +117,7 @@
                                 file:bg-blue-600
                                 file:text-white
                                 hover:file:bg-blue-700
-                                file:cursor-pointer">
+                                file:cursor-pointer" required>
 
                         </div>
 
@@ -157,7 +158,7 @@
 
                 <select
                     name="link_type"
-                    id="link_type"
+                    id="link_type" required
                     class="w-full rounded-xl border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
 
                     <option value="none">No Link</option>
@@ -182,7 +183,7 @@
 
                 <select
                     id="link_id"
-                    name="link_id"
+                    name="link_id" required
                     class="w-full rounded-xl border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
 
                     <option value="">
@@ -205,7 +206,7 @@
                 </label>
 
                 <select
-                    name="position"
+                    name="position" required
                     class="w-full rounded-xl border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
 
                     <option value="top_banner">
@@ -244,8 +245,10 @@
                     <input
                         type="number"
                         name="sort_order"
+                        value="{{old('number')}}"
                         value="1"
                         min="1"
+                        required
                         class="w-full rounded-xl border-gray-300 shadow-sm
                                focus:ring-2 focus:ring-blue-500
                                focus:border-blue-500
@@ -285,6 +288,7 @@
 
                 <select
                     name="status"
+                    required
                     class="w-full rounded-xl border-gray-300 shadow-sm
                            focus:ring-2 focus:ring-blue-500
                            focus:border-blue-500 py-3">

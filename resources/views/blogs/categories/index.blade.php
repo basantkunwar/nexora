@@ -5,12 +5,12 @@
     <!-- Header -->
     <div class="flex items-center justify-between mb-6">
        
-@can('ceate')
+@can('create')
         <a href="{{ route('blogs.categories.create') }}"
            class="px-5 py-2.5 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition">
             Add Category
         </a>
-        @endcan
+ @endcan
     </div>
     <div class="mb-2">
         <form action="" class="grid grid-cols-1 md:grid-cols-4 gap-3">

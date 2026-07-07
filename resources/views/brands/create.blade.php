@@ -43,7 +43,7 @@
                            name="name"
                            value="{{ old('name') }}"
                            placeholder="Enter brand name"
-                           class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-4 focus:ring-indigo-100 focus:border-indigo-500 transition">
+                           class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-4 focus:ring-indigo-100 focus:border-indigo-500 transition" required>
 
                     @error('name')
                         <p class="text-red-500 text-sm mt-2">
@@ -60,6 +60,7 @@
 
                     <input type="file"
                            name="image"
+                           value="{{old('image')}}"
                            id="logo"
                            accept="image/*"
                            onchange="previewImage(event)"
@@ -92,7 +93,7 @@
                     <textarea
                         name="description"
                         rows="4"
-                        placeholder="Write a short description..."
+                        placeholder="Write a short description..." required
                         class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-4 focus:ring-indigo-100 focus:border-indigo-500 transition resize-none">{{ old('description') }}</textarea>
                 </div>
 
@@ -102,7 +103,7 @@
                         Status
                     </label>
 
-                    <select name="status"
+                    <select name="status" required 
                             class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-4 focus:ring-indigo-100 focus:border-indigo-500">
                         <option value="available">
                         available

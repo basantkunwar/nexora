@@ -89,25 +89,32 @@
                         
                     </td>
 
+         <td class="px-5 py-4">
+    <div class="flex items-center justify-center gap-3">
 
-                    <td class="flex justify-center gap-2 pt-4">
+        <!-- View Button -->
+        <a href="{{ route('orders.show', $order->id) }}"
+           class="w-10 h-10 flex items-center justify-center rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition">
+            <i class="fa fa-eye"></i>
+        </a>
 
+        <!-- Cancel Button -->
+        @if(auth()->user()->hasRole('super-admin|admin|manager') && !in_array($order->status, ['cancelled', 'delivered']))
+            <form action="{{ route('orders.cancel', $order->id) }}" method="POST">
+                @csrf
+                @method('PATCH')
 
-                        <a href="{{ route('orders.show',$order->id) }}"
-                           class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-lg">
+                <button
+                    type="submit"
+                    onclick="return confirm('Are you sure you want to cancel this order?')"
+                    class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition duration-200">
+                    Cancel
+                </button>
+            </form>
+        @endif
 
-                            <i class="fa fa-eye"></i>
-
-                        </a>
-                        <form action="{{ route('orders.destroy', $order) }}" method="post"   onsubmit="return confirm('Are you sure you want to delete this order?')">
-    @csrf
-    @method('DELETE')
-    <button type="submit" class="bg-red-500 hover:bg-red-600 text-white w-10 h-10 rounded-lg flex items-center justify-center">
-        <i class="fa fa-trash"></i>
-    </button>
-</form>
-
-                    </td>
+    </div>
+</td>
 
                 </tr>
 

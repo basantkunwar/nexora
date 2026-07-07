@@ -85,7 +85,7 @@ class CartsController extends Controller
 
     if ($cartitems->isEmpty()) {
         return redirect()
-            ->route('carts.index')
+            ->route('products.search')
             ->with('Your cart is empty. Please add products first.');
     }
 
@@ -123,7 +123,40 @@ class CartsController extends Controller
         return view('cart.checkout', compact('carts', 'cartitems', 'user'));
     }
 
+    public function update(Request $request, $id)
+{
+    $cartItem = cartItems::findOrFail($id);
 
-  
-    
+    $product = $cartItem->product;
+
+    $price = $product->price;
+    $discount = $product->discount ?? 0;
+    $finalPrice = $price - ($price * $discount / 100);
+
+    if ($request->action == "increase") {
+        $cartItem->quantity++;
+    }
+
+    if ($request->action == "decrease" && $cartItem->quantity > 1) {
+        $cartItem->quantity--;
+    }
+
+    $cartItem->subtotal = $cartItem->quantity * $finalPrice;
+    $cartItem->save();
+
+    $cart = Carts::findOrFail($cartItem->cart_id);
+
+    $cart->total_items = cartItems::where('cart_id', $cart->id)->sum('quantity');
+    $cart->subtotal = cartItems::where('cart_id', $cart->id)->sum('subtotal');
+    $cart->grand_total = $cart->subtotal + $cart->shipping_fee;
+    $cart->save();
+
+    return response()->json([
+        'quantity' => $cartItem->quantity,
+        'subtotal' => $cartItem->subtotal,
+        'total_items' => $cart->total_items,
+        'grand_total' => $cart->grand_total,
+    ]);
+}
+
 }

@@ -80,7 +80,7 @@
 
                             <!-- ID -->
                             <td class="px-6 py-4">
-                                {{ $brand->id }}
+                                {{ $loop->iteration }}
                             </td>
 
                             <!-- Logo -->

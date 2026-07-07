@@ -36,7 +36,7 @@
                         <input
                             type="text"
                             name="name"
-                            value=""
+                            value="{{old('name')}}"
                             placeholder="Enter role name"
                             class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition duration-200"
                         >
