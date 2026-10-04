@@ -1,3 +1,4 @@
+@role('admin|super-admin|manager')
 <x-app-layout>
 
     <div class="flex justify-end">
@@ -152,3 +153,4 @@
     </div>
 
 </x-app-layout>
+@endrole

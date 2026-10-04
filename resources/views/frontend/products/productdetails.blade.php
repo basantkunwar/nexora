@@ -130,7 +130,7 @@
                     ✓ Available for Delivery
                 </p>
 
-                <form action="" method="POST" class="mt-6">
+                <form action="{{route('frontend.products.incomplete')}}"  class="mt-6">
                     @csrf
 
                     <div class="border rounded-xl flex items-center justify-between px-4 py-3">

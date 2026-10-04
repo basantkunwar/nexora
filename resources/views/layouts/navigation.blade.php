@@ -49,6 +49,7 @@
         x-show="open"
         x-transition
         class="ml-8 mt-2 space-y-2">
+        
 
         <a href="{{ route('orders.index') }}"
             class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-white/10 transition">

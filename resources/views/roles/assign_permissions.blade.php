@@ -1,3 +1,4 @@
+@role('admin|super-admin')
 <x-app-layout>
 
     <x-slot name="header">
@@ -53,3 +54,4 @@
     </div>
 
 </x-app-layout>
+@endrole

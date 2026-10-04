@@ -211,9 +211,9 @@ Route::get('frontend/category/index/{id}',[CategoryController::class,'details'])
 
 // productsdetails route
 Route::get('frontend/products/productdetails/{id}',[productsController::class,'productdetails'])->name('frontend.product.productdetails');
-
+route::get('frontend/products/incomplete', [productsController::class, 'incomplete'])->name('frontend.products.incomplete');
 // fallback route
 Route::fallback(function () {
-    return view('fallback.notfound49#$@#$#$#');
+    return view ('fallback.notfound49#$@#$#$#');
 })->name('404');
 require __DIR__.'/auth.php';

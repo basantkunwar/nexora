@@ -28,6 +28,9 @@ class Dashboard extends Controller
         $data['totalOrders'] = Order::count();
         $data['grandTotal'] = Order::where('grand_total', '>', 0)->sum('grand_total');
     }
+    $orderStatus = Order::selectRaw('status, COUNT(*) as total')
+    ->groupBy('status')
+    ->get();
         $category=Category::all();
         $blog=Blog::all();
         $brand=Brand::all();
@@ -42,7 +45,8 @@ class Dashboard extends Controller
             'blog'=>$blog,
             'brand'=>$brand,
             'brands'=>$brands,
-            'categories'=>$categoryies
+            'categories'=>$categoryies,
+             'orderStatus' => $orderStatus
 
         ],$data);
     }

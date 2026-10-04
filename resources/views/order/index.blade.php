@@ -1,3 +1,4 @@
+
 <x-app-layout>
 
     <div class="bg-white rounded-xl shadow-lg p-6">

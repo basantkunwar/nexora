@@ -172,4 +172,8 @@ public function search(Request $request)
         'categories'
     ));
 }
+
+public function incomplete(){
+    return view('frontend.products.incomplete');
+    }
 }

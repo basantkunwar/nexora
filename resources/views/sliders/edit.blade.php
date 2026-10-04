@@ -1,3 +1,4 @@
+@role('admin|super-admin|manager')
 <x-app-layout>
 
     <div class="max-w-4xl mx-auto">
@@ -174,3 +175,4 @@ document.getElementById('image').addEventListener('change', function(e) {
 
 });
 </script>
+@endrole

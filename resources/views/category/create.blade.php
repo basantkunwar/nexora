@@ -1,3 +1,4 @@
+@role('admin|super-admin|manager')
 <x-app-layout>
 <div class="min-h-screen bg-slate-50 p-6">
 
@@ -112,3 +113,4 @@
 
 </div>
 </x-app-layout>
+@endrole

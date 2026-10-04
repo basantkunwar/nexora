@@ -1,3 +1,4 @@
+@role('admin|super-admin')
 <x-app-layout>
 
     <div class="py-8">
@@ -54,3 +55,4 @@
     </div>
 
 </x-app-layout>
+@endrole

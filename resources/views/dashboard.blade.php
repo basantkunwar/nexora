@@ -144,11 +144,24 @@
         </div>
     </div>
 
+    {{-- order by status chart --}}
+  <div class="bg-white rounded-xl shadow p-5">
+        <h2 class="text-lg font-semibold mb-4">
+        order by status
+        </h2>
+
+        <div class="h-64">
+            <canvas id="orderStatusChart"></canvas>
+        </div>
+    </div>
+
+</div>
+
 </div>
 
 
         <!-- Recent Activity Section -->
-       <div class="mt-10 bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+       <div class=" bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
     <h2 class="text-xl font-semibold text-slate-800 mb-4">
         Store Summary
     </h2>
@@ -251,6 +264,11 @@ createChart(
     'categoryChart',
     @json($categories->pluck('name')),
     @json($categories->pluck('products_count'))
+);
+createChart(
+    'orderStatusChart',
+    @json($orderStatus->pluck('status')),
+    @json($orderStatus->pluck('total'))
 );
 
 </script>

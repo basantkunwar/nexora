@@ -1,3 +1,4 @@
+@role('admin|super-admin')
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-2xl font-bold text-gray-800">
@@ -72,3 +73,4 @@
         </div>
     </div>
 </x-app-layout>
+@endrole

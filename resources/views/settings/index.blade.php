@@ -1,3 +1,4 @@
+@role('admin|super-admin|manager')
 <x-app-layout>
 
 <div class="max-w-6xl mx-auto py-10 px-4">
@@ -202,3 +203,4 @@ function openTab(tab, btn) {
 </style>
 
 </x-app-layout>
+@endrole

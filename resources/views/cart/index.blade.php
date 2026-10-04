@@ -127,11 +127,6 @@
 </span>
                         </div>
 
-                        <div class="flex justify-between">
-                            <span>Shipping</span>
-                            <span>$0</span>
-                        </div>
-
                         <hr>
 
                         <div class="flex justify-between text-xl font-bold">
